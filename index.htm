@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MFK RSUD Kab. Kepl. Talaud</title>
+    <!-- Memuat Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Menggunakan font Inter sebagai default */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Header dan Navigasi -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div>
+                <a href="#" class="text-xl font-bold text-blue-800">MFK RSUD TALAUD</a>
+                <p class="text-sm text-gray-600">Manajemen Fasilitas & Keselamatan</p>
+            </div>
+            <!-- Navigasi Desktop -->
+            <div class="hidden md:flex space-x-6">
+                <a href="#beranda" class="text-gray-700 hover:text-blue-600">Beranda</a>
+                <a href="#tentang" class="text-gray-700 hover:text-blue-600">Tentang Kami</a>
+                <a href="#program" class="text-gray-700 hover:text-blue-600">Program</a>
+                <a href="#galeri" class="text-gray-700 hover:text-blue-600">Galeri Kegiatan</a>
+                <a href="#kontak" class="text-gray-700 hover:text-blue-600">Kontak</a>
+            </div>
+            <!-- Tombol Hamburger Mobile -->
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-gray-700 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg">
+            <a href="#beranda" class="block px-6 py-3 text-gray-700 hover:bg-gray-100">Beranda</a>
+            <a href="#tentang" class="block px-6 py-3 text-gray-700 hover:bg-gray-100">Tentang Kami</a>
+            <a href="#program" class="block px-6 py-3 text-gray-700 hover:bg-gray-100">Program</a>
+            <a href="#galeri" class="block px-6 py-3 text-gray-700 hover:bg-gray-100">Galeri Kegiatan</a>
+            <a href="#kontak" class="block px-6 py-3 text-gray-700 hover:bg-gray-100">Kontak</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="beranda" class="relative h-[60vh] flex items-center justify-center text-white text-center">
+            <!-- Gambar Latar (Placeholder) -->
+            <div class="absolute inset-0 bg-black opacity-50"></div>
+            <img src="https://placehold.co/1600x900/4A90E2/FFFFFF?text=Gedung+RSUD+Kab.+Kepl.+Talaud" alt="Gedung RSUD Talaud" class="absolute inset-0 w-full h-full object-cover">
+            
+            <div class="relative z-10 px-4">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg">Selamat Datang di Portal MFK</h1>
+                <p class="text-lg md:text-2xl font-light drop-shadow-md">Menciptakan Lingkungan Rumah Sakit yang Aman, Nyaman, dan Efisien di RSUD Kab. Kepl. Talaud</p>
+            </div>
+        </section>
+
+        <!-- Tentang Kami Section -->
+        <section id="tentang" class="py-16 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6">Tentang MFK RSUD Talaud</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Manajemen Fasilitas dan Keselamatan (MFK) adalah unit vital di RSUD Kab. Kepl. Talaud yang bertanggung jawab untuk mengelola dan memelihara seluruh fasilitas fisik, peralatan medis, dan sistem utilitas rumah sakit. Tujuan utama kami adalah memastikan lingkungan perawatan pasien yang aman, fungsional, dan mendukung, serta mematuhi semua standar akreditasi dan peraturan yang berlaku.
+                </p>
+            </div>
+        </section>
+
+        <!-- Program Unggulan Section -->
+        <section id="program" class="py-16 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Program & Layanan Kami</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Card 1: Keselamatan Fasilitas -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:-translate-y-2">
+                        <img src="https://placehold.co/600x400/F5A623/FFFFFF?text=Inspeksi+Keselamatan" alt="Inspeksi Keselamatan" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-3">Keselamatan & Keamanan Fasilitas</h3>
+                            <p class="text-gray-600">Inspeksi rutin bangunan, manajemen risiko kebakaran, dan pemeliharaan infrastruktur untuk menjamin keamanan pasien, staf, dan pengunjung.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Manajemen B3 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:-translate-y-2">
+                        <img src="https://placehold.co/600x400/D0021B/FFFFFF?text=Manajemen+B3+dan+Limbah" alt="Manajemen B3" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-3">Manajemen B3 & Limbah</h3>
+                            <p class="text-gray-600">Pengelolaan Bahan Berbahaya dan Beracun (B3) serta limbah medis dan non-medis sesuai standar untuk mencegah kontaminasi.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Kesiapsiagaan Bencana -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:-translate-y-2">
+                        <img src="https://placehold.co/600x400/4A90E2/FFFFFF?text=Simulasi+Bencana" alt="Simulasi Bencana" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-3">Kesiapsiagaan Bencana</h3>
+                            <p class="text-gray-600">Pengembangan rencana dan pelaksanaan simulasi tanggap darurat (code red, code blue) untuk menghadapi bencana internal maupun eksternal.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Sistem Utilitas -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:-translate-y-2">
+                        <img src="https://placehold.co/600x400/50E3C2/FFFFFF?text=Sistem+Utilitas+(Listrik+%26+Air)" alt="Sistem Utilitas" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-3">Manajemen Sistem Utilitas</h3>
+                            <p class="text-gray-600">Memastikan ketersediaan dan keandalan sistem vital seperti listrik (genset), air bersih, gas medis, dan sistem HVAC (tata udara).</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 5: Peralatan Medis -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:-translate-y-2">
+                        <img src="https://placehold.co/600x400/7ED321/FFFFFF?text=Pemeliharaan+Alat+Medis" alt="Alat Medis" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-3">Pemeliharaan Peralatan Medis</h3>
+                            <p class="text-gray-600">Kalibrasi, inspeksi, dan pemeliharaan preventif alat kesehatan untuk memastikan akurasi dan keamanan penggunaan alat.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 6: Pelatihan Staf -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:-translate-y-2">
+                        <img src="https://placehold.co/600x400/9013FE/FFFFFF?text=Pelatihan+Staf" alt="Pelatihan Staf" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-3">Edukasi & Pelatihan Staf</h3>
+                            <p class="text-gray-600">Memberikan pelatihan rutin kepada staf rumah sakit mengenai penggunaan APAR, evakuasi, dan prosedur keselamatan lainnya.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Galeri Kegiatan Section -->
+        <section id="galeri" class="py-16 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Galeri Kegiatan MFK</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    
+                    <!-- Ganti 'src' dengan URL foto Anda -->
+                    <div class="rounded-lg shadow-md overflow-hidden aspect-square">
+                        <img src="https://placehold.co/500x500/F5A623/FFFFFF?text=Pelatihan+Penggunaan+APAR" alt="Pelatihan APAR" class="w-full h-full object-cover transition-transform transform hover:scale-110">
+                    </div>
+                    <div class="rounded-lg shadow-md overflow-hidden aspect-square">
+                        <img src="https://placehold.co/500x500/4A90E2/FFFFFF?text=Simulasi+Evakuasi+Pasien" alt="Simulasi Evakuasi" class="w-full h-full object-cover transition-transform transform hover:scale-110">
+                    </div>
+                    <div class="rounded-lg shadow-md overflow-hidden aspect-square">
+                        <img src="https://placehold.co/500x500/7ED321/FFFFFF?text=Inspeksi+Sistem+Listrik" alt="Inspeksi Listrik" class="w-full h-full object-cover transition-transform transform hover:scale-110">
+                    </div>
+                    <div class="rounded-lg shadow-md overflow-hidden aspect-square">
+                        <img src="https://placehold.co/500x500/D0021B/FFFFFF?text=Rapat+Koordinasi+Tim+MFK" alt="Rapat MFK" class="w-full h-full object-cover transition-transform transform hover:scale-110">
+                    </div>
+                    <div class="rounded-lg shadow-md overflow-hidden aspect-square">
+                        <img src="https://placehold.co/500x500/9013FE/FFFFFF?text=Pemeriksaan+Gas+Medis" alt="Pemeriksaan Gas Medis" class="w-full h-full object-cover transition-transform transform hover:scale-110">
+                    </div>
+                    <div class="rounded-lg shadow-md overflow-hidden aspect-square">
+                        <img src="https://placehold.co/500x500/50E3C2/FFFFFF?text=Manajemen+Limbah+B3" alt="Manajemen Limbah" class="w-full h-full object-cover transition-transform transform hover:scale-110">
+                    </div>
+                    <div class="rounded-lg shadow-md overflow-hidden aspect-square">
+                        <img src="https://placehold.co/500x500/BD10E0/FFFFFF?text=Kalibrasi+Alat+Medis" alt="Kalibrasi Alat" class="w-full h-full object-cover transition-transform transform hover:scale-110">
+                    </div>
+                    <div class="rounded-lg shadow-md overflow-hidden aspect-square">
+                        <img src="https://placehold.co/500x500/F8E71C/333333?text=Perbaikan+Fasilitas" alt="Perbaikan Fasilitas" class="w-full h-full object-cover transition-transform transform hover:scale-110">
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Kontak Section -->
+        <section id="kontak" class="py-16 bg-gray-50">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6">Hubungi Kami</h2>
+                <p class="text-gray-600 max-w-lg mx-auto mb-8">
+                    Untuk laporan insiden keselamatan, permintaan perbaikan fasilitas, atau informasi lebih lanjut, silakan hubungi tim MFK.
+                </p>
+                <div class="text-lg text-gray-700">
+                    <p class="mb-2"><strong>Lokasi:</strong> Ruang MFK, Gedung Manajemen RSUD Kab. Kepl. Talaud</p>
+                    <p class="mb-2"><strong>Email:</strong> <a href="mailto:mfk@rsud-talaud.go.id" class="text-blue-600 hover:underline">mfk@rsud-talaud.go.id</a> (contoh)</p>
+                    <p><strong>Telepon Internal:</strong> Ext. 123 (contoh)</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 Manajemen Fasilitas dan Keselamatan (MFK) RSUD Kab. Kepl. Talaud. Semua Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
+    <!-- Script untuk Menu Mobile -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Tutup menu saat link di-klik
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+
+</body>
+</html>
