@@ -3,219 +3,801 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MFK RSUD Kab. Kepl. Talaud</title>
-    <!-- Memuat Tailwind CSS -->
+    <title>MFK RSUD Talaud - Manajemen Fasilitas Keselamatan</title>
+    <meta name="description" content="Manajemen Fasilitas Keselamatan RSUD Talaud - Komitmen untuk keselamatan tertinggi pasien, staf, dan pengunjung">
+    <meta name="keywords" content="RSUD Talaud, MFK, Keselamatan Pasien, K3, Manajemen Fasilitas, Rumah Sakit">
+    <meta name="author" content="MFK RSUD Talaud">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="MFK RSUD Talaud - Manajemen Fasilitas Keselamatan">
+    <meta property="og:description" content="Manajemen Fasilitas Keselamatan RSUD Talaud - Komitmen untuk keselamatan tertinggi">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rsudtalaud.go.id/mfk">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Custom Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: '#2563eb',
+                            foreground: '#ffffff'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
     <style>
-        /* Menggunakan font Inter sebagai default */
-        body {
-            font-family: 'Inter', sans-serif;
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* Mobile menu styles */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
         }
     </style>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gradient-to-b from-blue-50 to-white min-h-screen">
+    
+    <!-- Navigation Header -->
+    <header class="bg-white shadow-sm border-b border-blue-100 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-4">
+                    <div class="bg-blue-600 p-2 rounded-lg">
+                        <i data-lucide="shield" class="h-8 w-8 text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-900">MFK RSUD Talaud</h1>
+                        <p class="text-sm text-gray-600">Manajemen Fasilitas Keselamatan</p>
+                    </div>
+                </a>
 
-    <!-- Header dan Navigasi -->
-    <header class="bg-white shadow-md sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div>
-                <a href="#" class="text-xl font-bold text-blue-800">MFK RSUD TALAUD</a>
-                <p class="text-sm text-gray-600">Manajemen Fasilitas & Keselamatan</p>
-            </div>
-            <!-- Navigasi Desktop -->
-            <div class="hidden md:flex space-x-6">
-                <a href="#beranda" class="text-gray-700 hover:text-blue-600">Beranda</a>
-                <a href="#tentang" class="text-gray-700 hover:text-blue-600">Tentang Kami</a>
-                <a href="#program" class="text-gray-700 hover:text-blue-600">Program</a>
-                <a href="#galeri" class="text-gray-700 hover:text-blue-600">Galeri Kegiatan</a>
-                <a href="#kontak" class="text-gray-700 hover:text-blue-600">Kontak</a>
-            </div>
-            <!-- Tombol Hamburger Mobile -->
-            <div class="md:hidden">
-                <button id="menu-btn" class="text-gray-700 focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                    </svg>
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-6">
+                    <a href="#beranda" class="text-blue-600 font-medium hover:text-blue-700 transition-colors">Beranda</a>
+                    <a href="#tentang" class="text-gray-600 hover:text-blue-600 transition-colors">Tentang</a>
+                    <a href="#layanan" class="text-gray-600 hover:text-blue-600 transition-colors">Layanan</a>
+                    <a href="#standar" class="text-gray-600 hover:text-blue-600 transition-colors">Standar</a>
+                    <a href="#berita" class="text-gray-600 hover:text-blue-600 transition-colors">Berita</a>
+                    <a href="#kontak" class="text-gray-600 hover:text-blue-600 transition-colors">Kontak</a>
+                </nav>
+
+                <!-- Desktop CTA Button -->
+                <div class="hidden md:block">
+                    <a href="#kontak" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg flex items-center transition-colors">
+                        <i data-lucide="alert-triangle" class="h-4 w-4 mr-2"></i>
+                        Laporkan Insiden
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors">
+                    <i data-lucide="menu" class="h-6 w-6"></i>
                 </button>
             </div>
-        </nav>
-        <!-- Menu Mobile -->
-        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg">
-            <a href="#beranda" class="block px-6 py-3 text-gray-700 hover:bg-gray-100">Beranda</a>
-            <a href="#tentang" class="block px-6 py-3 text-gray-700 hover:bg-gray-100">Tentang Kami</a>
-            <a href="#program" class="block px-6 py-3 text-gray-700 hover:bg-gray-100">Program</a>
-            <a href="#galeri" class="block px-6 py-3 text-gray-700 hover:bg-gray-100">Galeri Kegiatan</a>
-            <a href="#kontak" class="block px-6 py-3 text-gray-700 hover:bg-gray-100">Kontak</a>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Hero Section -->
-        <section id="beranda" class="relative h-[60vh] flex items-center justify-center text-white text-center">
-            <!-- Gambar Latar (Placeholder) -->
-            <div class="absolute inset-0 bg-black opacity-50"></div>
-            <img src="https://placehold.co/1600x900/4A90E2/FFFFFF?text=Gedung+RSUD+Kab.+Kepl.+Talaud" alt="Gedung RSUD Talaud" class="absolute inset-0 w-full h-full object-cover">
+    <!-- Mobile Navigation -->
+    <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 w-80 h-full bg-white shadow-xl z-50 md:hidden">
+        <div class="p-4">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-blue-600 p-2 rounded-lg">
+                        <i data-lucide="shield" class="h-6 w-6 text-white"></i>
+                    </div>
+                    <div>
+                        <h2 class="font-bold text-gray-900">MFK RSUD Talaud</h2>
+                        <p class="text-sm text-gray-600">Menu Navigasi</p>
+                    </div>
+                </div>
+                <button id="close-menu-btn" class="p-2 rounded-lg hover:bg-gray-100 transition-colors">
+                    <i data-lucide="x" class="h-6 w-6"></i>
+                </button>
+            </div>
             
-            <div class="relative z-10 px-4">
-                <h1 class="text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg">Selamat Datang di Portal MFK</h1>
-                <p class="text-lg md:text-2xl font-light drop-shadow-md">Menciptakan Lingkungan Rumah Sakit yang Aman, Nyaman, dan Efisien di RSUD Kab. Kepl. Talaud</p>
+            <nav class="space-y-2">
+                <a href="#beranda" class="block px-4 py-3 rounded-lg text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-colors">Beranda</a>
+                <a href="#tentang" class="block px-4 py-3 rounded-lg text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-colors">Tentang</a>
+                <a href="#layanan" class="block px-4 py-3 rounded-lg text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-colors">Layanan</a>
+                <a href="#standar" class="block px-4 py-3 rounded-lg text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-colors">Standar</a>
+                <a href="#berita" class="block px-4 py-3 rounded-lg text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-colors">Berita</a>
+                <a href="#kontak" class="block px-4 py-3 rounded-lg text-gray-600 hover:text-blue-600 hover:bg-blue-50 transition-colors">Kontak</a>
+            </nav>
+            
+            <div class="mt-6 pt-6 border-t">
+                <a href="#kontak" class="w-full bg-red-600 hover:bg-red-700 text-white px-4 py-3 rounded-lg flex items-center justify-center transition-colors">
+                    <i data-lucide="alert-triangle" class="h-4 w-4 mr-2"></i>
+                    Laporkan Insiden
+                </a>
             </div>
-        </section>
+        </div>
+    </div>
 
-        <!-- Tentang Kami Section -->
-        <section id="tentang" class="py-16 bg-white">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl font-bold text-gray-800 mb-6">Tentang MFK RSUD Talaud</h2>
-                <p class="text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                    Manajemen Fasilitas dan Keselamatan (MFK) adalah unit vital di RSUD Kab. Kepl. Talaud yang bertanggung jawab untuk mengelola dan memelihara seluruh fasilitas fisik, peralatan medis, dan sistem utilitas rumah sakit. Tujuan utama kami adalah memastikan lingkungan perawatan pasien yang aman, fungsional, dan mendukung, serta mematuhi semua standar akreditasi dan peraturan yang berlaku.
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden"></div>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="py-20 px-4 hero-gradient text-white">
+        <div class="container mx-auto text-center fade-in">
+            <div class="inline-flex items-center bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2 mb-6">
+                <i data-lucide="shield-check" class="h-4 w-4 mr-2"></i>
+                <span class="text-sm font-medium">Komitmen Keselamatan No. 1</span>
+            </div>
+            <h2 class="text-5xl font-bold mb-6">
+                Keselamatan Anda Prioritas Utama Kami
+            </h2>
+            <p class="text-xl max-w-3xl mx-auto opacity-90 mb-8">
+                Manajemen Fasilitas Keselamatan RSUD Talaud berkomitmen untuk menyediakan lingkungan 
+                yang aman dan terjamin bagi pasien, staf, dan pengunjung melalui standar keselamatan 
+                tertinggi dan manajemen risiko yang komprehensif.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#standar" class="bg-white text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium transition-colors flex items-center justify-center">
+                    <i data-lucide="file-text" class="h-5 w-5 mr-2"></i>
+                    Laporan Keselamatan
+                </a>
+                <a href="#kontak" class="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-6 py-3 rounded-lg font-medium transition-colors flex items-center justify-center">
+                    <i data-lucide="phone" class="h-5 w-5 mr-2"></i>
+                    Hubungi Kami
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold text-center text-gray-900 mb-12">
+                Statistik Keselamatan Kami
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="border border-green-200 bg-green-50 rounded-lg p-6 text-center card-hover">
+                    <i data-lucide="heart" class="h-12 w-12 text-green-600 mx-auto mb-4"></i>
+                    <div class="text-3xl font-bold text-green-700">127</div>
+                    <p class="text-green-600">Hari Tanpa Kecelakaan</p>
+                </div>
+                <div class="border border-blue-200 bg-blue-50 rounded-lg p-6 text-center card-hover">
+                    <i data-lucide="activity" class="h-12 w-12 text-blue-600 mx-auto mb-4"></i>
+                    <div class="text-3xl font-bold text-blue-700">45</div>
+                    <p class="text-blue-600">Insiden Ditangani</p>
+                </div>
+                <div class="border border-purple-200 bg-purple-50 rounded-lg p-6 text-center card-hover">
+                    <i data-lucide="users" class="h-12 w-12 text-purple-600 mx-auto mb-4"></i>
+                    <div class="text-3xl font-bold text-purple-700">23</div>
+                    <p class="text-purple-600">Pelatihan Dilaksanakan</p>
+                </div>
+                <div class="border border-orange-200 bg-orange-50 rounded-lg p-6 text-center card-hover">
+                    <i data-lucide="shield" class="h-12 w-12 text-orange-600 mx-auto mb-4"></i>
+                    <div class="text-3xl font-bold text-orange-700">98.5%</div>
+                    <p class="text-orange-600">Kepuasan Pasien</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="layanan" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold text-center text-gray-900 mb-12">
+                Layanan Keselamatan Kami
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg p-6 shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="heart" class="h-6 w-6 text-blue-600"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-blue-800 mb-2">Keselamatan Pasien</h4>
+                    <p class="text-gray-600 mb-4">Identifikasi pasien, pencegahan infeksi, dan keamanan obat-obatan</p>
+                    <a href="#layanan" class="text-blue-600 hover:text-blue-700 font-medium flex items-center">
+                        Pelajari Lebih Lanjut <i data-lucide="chevron-right" class="h-4 w-4 ml-2"></i>
+                    </a>
+                </div>
+
+                <div class="bg-white rounded-lg p-6 shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="users" class="h-6 w-6 text-green-600"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-green-800 mb-2">Keselamatan Kerja (K3)</h4>
+                    <p class="text-gray-600 mb-4">Perlindungan karyawan dari risiko cedera dan penyakit akibat kerja</p>
+                    <a href="#layanan" class="text-green-600 hover:text-green-700 font-medium flex items-center">
+                        Pelajari Lebih Lanjut <i data-lucide="chevron-right" class="h-4 w-4 ml-2"></i>
+                    </a>
+                </div>
+
+                <div class="bg-white rounded-lg p-6 shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="flame" class="h-6 w-6 text-red-600"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-red-800 mb-2">Manajemen Kebakaran</h4>
+                    <p class="text-gray-600 mb-4">Sistem deteksi dini, APAR, dan simulasi evakuasi berkala</p>
+                    <a href="#layanan" class="text-red-600 hover:text-red-700 font-medium flex items-center">
+                        Pelajari Lebih Lanjut <i data-lucide="chevron-right" class="h-4 w-4 ml-2"></i>
+                    </a>
+                </div>
+
+                <div class="bg-white rounded-lg p-6 shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="trash-2" class="h-6 w-6 text-yellow-600"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-yellow-800 mb-2">Manajemen Limbah Medis</h4>
+                    <p class="text-gray-600 mb-4">Penanganan limbah B3 dan medis yang aman dan ramah lingkungan</p>
+                    <a href="#layanan" class="text-yellow-600 hover:text-yellow-700 font-medium flex items-center">
+                        Pelajari Lebih Lanjut <i data-lucide="chevron-right" class="h-4 w-4 ml-2"></i>
+                    </a>
+                </div>
+
+                <div class="bg-white rounded-lg p-6 shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="lock" class="h-6 w-6 text-purple-600"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-purple-800 mb-2">Keamanan Fisik</h4>
+                    <p class="text-gray-600 mb-4">Pengendalian akses dan sistem pengawasan aset dan individu</p>
+                    <a href="#layanan" class="text-purple-600 hover:text-purple-700 font-medium flex items-center">
+                        Pelajari Lebih Lanjut <i data-lucide="chevron-right" class="h-4 w-4 ml-2"></i>
+                    </a>
+                </div>
+
+                <div class="bg-white rounded-lg p-6 shadow-sm card-hover border-2 border-red-200 bg-red-50">
+                    <div class="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="alert-triangle" class="h-6 w-6 text-white"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold text-red-800 mb-2">Pelaporan Insiden</h4>
+                    <p class="text-gray-600 mb-4">Laporkan kejadian atau insiden keselamatan secara online</p>
+                    <a href="#kontak" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium flex items-center justify-center transition-colors">
+                        Laporkan Sekarang <i data-lucide="chevron-right" class="h-4 w-4 ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Announcement Section -->
+    <section class="py-16 bg-blue-600 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <h3 class="text-3xl font-bold mb-4">Pengumuman Penting</h3>
+                <p class="text-xl mb-8">Simulasi Kebakaran Semesteran akan dilaksanakan pada 15 Desember 2024</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#standar" class="bg-white text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium transition-colors flex items-center justify-center">
+                        <i data-lucide="file-text" class="h-5 w-5 mr-2"></i>
+                        Download Jadwal
+                    </a>
+                    <a href="#berita" class="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-6 py-3 rounded-lg font-medium transition-colors flex items-center justify-center">
+                        Lihat Semua Pengumuman
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="tentang" class="py-16 px-4">
+        <div class="container mx-auto">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-gray-900 mb-4">Tentang MFK RSUD Talaud</h3>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Manajemen Fasilitas Keselamatan adalah unit khusus yang bertanggung jawab atas 
+                    pengelolaan keselamatan fasilitas, keselamatan pasien, dan K3 di RSUD Talaud.
                 </p>
             </div>
-        </section>
 
-        <!-- Program Unggulan Section -->
-        <section id="program" class="py-16 bg-gray-50">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Program & Layanan Kami</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    
-                    <!-- Card 1: Keselamatan Fasilitas -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:-translate-y-2">
-                        <img src="https://placehold.co/600x400/F5A623/FFFFFF?text=Inspeksi+Keselamatan" alt="Inspeksi Keselamatan" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold text-gray-800 mb-3">Keselamatan & Keamanan Fasilitas</h3>
-                            <p class="text-gray-600">Inspeksi rutin bangunan, manajemen risiko kebakaran, dan pemeliharaan infrastruktur untuk menjamin keamanan pasien, staf, dan pengunjung.</p>
-                        </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-4xl mx-auto">
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i data-lucide="target" class="h-8 w-8 text-blue-600"></i>
                     </div>
+                    <h4 class="text-xl font-semibold text-blue-800 mb-3">Visi Kami</h4>
+                    <p class="text-gray-700">
+                        "Menjadi pelopor dalam manajemen fasilitas keselamatan rumah sakit 
+                        yang mengedepankan budaya keselamatan, inovasi berkelanjutan, dan 
+                        keunggulan pelayanan kesehatan di Indonesia."
+                    </p>
+                </div>
 
-                    <!-- Card 2: Manajemen B3 -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:-translate-y-2">
-                        <img src="https://placehold.co/600x400/D0021B/FFFFFF?text=Manajemen+B3+dan+Limbah" alt="Manajemen B3" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold text-gray-800 mb-3">Manajemen B3 & Limbah</h3>
-                            <p class="text-gray-600">Pengelolaan Bahan Berbahaya dan Beracun (B3) serta limbah medis dan non-medis sesuai standar untuk mencegah kontaminasi.</p>
-                        </div>
+                <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                        <i data-lucide="book-open" class="h-8 w-8 text-green-600"></i>
                     </div>
-
-                    <!-- Card 3: Kesiapsiagaan Bencana -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:-translate-y-2">
-                        <img src="https://placehold.co/600x400/4A90E2/FFFFFF?text=Simulasi+Bencana" alt="Simulasi Bencana" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold text-gray-800 mb-3">Kesiapsiagaan Bencana</h3>
-                            <p class="text-gray-600">Pengembangan rencana dan pelaksanaan simulasi tanggap darurat (code red, code blue) untuk menghadapi bencana internal maupun eksternal.</p>
-                        </div>
-                    </div>
-
-                    <!-- Card 4: Sistem Utilitas -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:-translate-y-2">
-                        <img src="https://placehold.co/600x400/50E3C2/FFFFFF?text=Sistem+Utilitas+(Listrik+%26+Air)" alt="Sistem Utilitas" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold text-gray-800 mb-3">Manajemen Sistem Utilitas</h3>
-                            <p class="text-gray-600">Memastikan ketersediaan dan keandalan sistem vital seperti listrik (genset), air bersih, gas medis, dan sistem HVAC (tata udara).</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Card 5: Peralatan Medis -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:-translate-y-2">
-                        <img src="https://placehold.co/600x400/7ED321/FFFFFF?text=Pemeliharaan+Alat+Medis" alt="Alat Medis" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold text-gray-800 mb-3">Pemeliharaan Peralatan Medis</h3>
-                            <p class="text-gray-600">Kalibrasi, inspeksi, dan pemeliharaan preventif alat kesehatan untuk memastikan akurasi dan keamanan penggunaan alat.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Card 6: Pelatihan Staf -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:-translate-y-2">
-                        <img src="https://placehold.co/600x400/9013FE/FFFFFF?text=Pelatihan+Staf" alt="Pelatihan Staf" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold text-gray-800 mb-3">Edukasi & Pelatihan Staf</h3>
-                            <p class="text-gray-600">Memberikan pelatihan rutin kepada staf rumah sakit mengenai penggunaan APAR, evakuasi, dan prosedur keselamatan lainnya.</p>
-                        </div>
-                    </div>
-
+                    <h4 class="text-xl font-semibold text-green-800 mb-3">Misi Kami</h4>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start">
+                            <i data-lucide="check-circle" class="h-5 w-5 text-green-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                            <span>Memastikan kepatuhan terhadap standar keselamatan</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="check-circle" class="h-5 w-5 text-green-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                            <span>Meningkatkan kompetensi staf melalui pelatihan</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="check-circle" class="h-5 w-5 text-green-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                            <span>Membangun budaya keselamatan yang proaktif</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="check-circle" class="h-5 w-5 text-green-600 mr-2 mt-0.5 flex-shrink-0"></i>
+                            <span>Melindungi keselamatan pasien, staf, dan pengunjung</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Galeri Kegiatan Section -->
-        <section id="galeri" class="py-16 bg-white">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Galeri Kegiatan MFK</h2>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    
-                    <!-- Ganti 'src' dengan URL foto Anda -->
-                    <div class="rounded-lg shadow-md overflow-hidden aspect-square">
-                        <img src="https://placehold.co/500x500/F5A623/FFFFFF?text=Pelatihan+Penggunaan+APAR" alt="Pelatihan APAR" class="w-full h-full object-cover transition-transform transform hover:scale-110">
-                    </div>
-                    <div class="rounded-lg shadow-md overflow-hidden aspect-square">
-                        <img src="https://placehold.co/500x500/4A90E2/FFFFFF?text=Simulasi+Evakuasi+Pasien" alt="Simulasi Evakuasi" class="w-full h-full object-cover transition-transform transform hover:scale-110">
-                    </div>
-                    <div class="rounded-lg shadow-md overflow-hidden aspect-square">
-                        <img src="https://placehold.co/500x500/7ED321/FFFFFF?text=Inspeksi+Sistem+Listrik" alt="Inspeksi Listrik" class="w-full h-full object-cover transition-transform transform hover:scale-110">
-                    </div>
-                    <div class="rounded-lg shadow-md overflow-hidden aspect-square">
-                        <img src="https://placehold.co/500x500/D0021B/FFFFFF?text=Rapat+Koordinasi+Tim+MFK" alt="Rapat MFK" class="w-full h-full object-cover transition-transform transform hover:scale-110">
-                    </div>
-                    <div class="rounded-lg shadow-md overflow-hidden aspect-square">
-                        <img src="https://placehold.co/500x500/9013FE/FFFFFF?text=Pemeriksaan+Gas+Medis" alt="Pemeriksaan Gas Medis" class="w-full h-full object-cover transition-transform transform hover:scale-110">
-                    </div>
-                    <div class="rounded-lg shadow-md overflow-hidden aspect-square">
-                        <img src="https://placehold.co/500x500/50E3C2/FFFFFF?text=Manajemen+Limbah+B3" alt="Manajemen Limbah" class="w-full h-full object-cover transition-transform transform hover:scale-110">
-                    </div>
-                    <div class="rounded-lg shadow-md overflow-hidden aspect-square">
-                        <img src="https://placehold.co/500x500/BD10E0/FFFFFF?text=Kalibrasi+Alat+Medis" alt="Kalibrasi Alat" class="w-full h-full object-cover transition-transform transform hover:scale-110">
-                    </div>
-                    <div class="rounded-lg shadow-md overflow-hidden aspect-square">
-                        <img src="https://placehold.co/500x500/F8E71C/333333?text=Perbaikan+Fasilitas" alt="Perbaikan Fasilitas" class="w-full h-full object-cover transition-transform transform hover:scale-110">
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Kontak Section -->
-        <section id="kontak" class="py-16 bg-gray-50">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl font-bold text-gray-800 mb-6">Hubungi Kami</h2>
-                <p class="text-gray-600 max-w-lg mx-auto mb-8">
-                    Untuk laporan insiden keselamatan, permintaan perbaikan fasilitas, atau informasi lebih lanjut, silakan hubungi tim MFK.
+    <!-- Standards Section -->
+    <section id="standar" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-gray-900 mb-4">Standar & Protokol</h3>
+                <p class="text-lg text-gray-600">
+                    Kumpulan kebijakan, SOP, dan protokol keselamatan yang menjadi acuan operasional
                 </p>
-                <div class="text-lg text-gray-700">
-                    <p class="mb-2"><strong>Lokasi:</strong> Ruang MFK, Gedung Manajemen RSUD Kab. Kepl. Talaud</p>
-                    <p class="mb-2"><strong>Email:</strong> <a href="mailto:mfk@rsud-talaud.go.id" class="text-blue-600 hover:underline">mfk@rsud-talaud.go.id</a> (contoh)</p>
-                    <p><strong>Telepon Internal:</strong> Ext. 123 (contoh)</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <div class="bg-white rounded-lg p-6 shadow-sm card-hover">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <i data-lucide="shield" class="h-6 w-6 text-blue-600"></i>
+                        <h4 class="font-semibold">Kebijakan Keselamatan Pasien</h4>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-3">Kebijakan utama keselamatan pasien RSUD Talaud</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-500">PDF • 2.4 MB</span>
+                        <a href="#" class="text-blue-600 hover:text-blue-700">
+                            <i data-lucide="download" class="h-4 w-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg p-6 shadow-sm card-hover">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <i data-lucide="users" class="h-6 w-6 text-green-600"></i>
+                        <h4 class="font-semibold">SOP Identifikasi Pasien</h4>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-3">Prosedur identifikasi pasien yang akurat</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-500">PDF • 1.8 MB</span>
+                        <a href="#" class="text-blue-600 hover:text-blue-700">
+                            <i data-lucide="download" class="h-4 w-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg p-6 shadow-sm card-hover">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <i data-lucide="flame" class="h-6 w-6 text-red-600"></i>
+                        <h4 class="font-semibold">SOP Manajemen Kebakaran</h4>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-3">Prosedur penanggulangan kebakaran</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-500">PDF • 2.1 MB</span>
+                        <a href="#" class="text-blue-600 hover:text-blue-700">
+                            <i data-lucide="download" class="h-4 w-4"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="berita" class="py-16 px-4">
+        <div class="container mx-auto">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-gray-900 mb-4">Berita & Pengumuman</h3>
+                <p class="text-lg text-gray-600">
+                    Update terkini mengenai program dan kegiatan MFK RSUD Talaud
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <article class="bg-white rounded-lg overflow-hidden shadow-sm card-hover">
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">Pengumuman Penting</span>
+                            <span class="text-xs text-gray-500">15 Des 2024</span>
+                        </div>
+                        <h4 class="text-lg font-semibold mb-2">Simulasi Kebakaran Semesteran Berhasil</h4>
+                        <p class="text-gray-600 text-sm mb-4">Simulasi kebakaran semesteran telah berhasil dilaksanakan dengan partisipasi seluruh staf...</p>
+                        <a href="#" class="text-blue-600 hover:text-blue-700 font-medium text-sm">Baca Selengkapnya →</a>
+                    </div>
+                </article>
+
+                <article class="bg-white rounded-lg overflow-hidden shadow-sm card-hover">
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Pelatihan</span>
+                            <span class="text-xs text-gray-500">10 Des 2024</span>
+                        </div>
+                        <h4 class="text-lg font-semibold mb-2">Pelatihan Keselamatan Pasien Batch 4</h4>
+                        <p class="text-gray-600 text-sm mb-4">Dibuka pendaftaran pelatihan keselamatan pasien batch 4 dengan fokus pada...</p>
+                        <a href="#" class="text-blue-600 hover:text-blue-700 font-medium text-sm">Baca Selengkapnya →</a>
+                    </div>
+                </article>
+
+                <article class="bg-white rounded-lg overflow-hidden shadow-sm card-hover">
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Prestasi</span>
+                            <span class="text-xs text-gray-500">5 Des 2024</span>
+                        </div>
+                        <h4 class="text-lg font-semibold mb-2">Pencapaian Zero Fall Rate 3 Bulan</h4>
+                        <p class="text-gray-600 text-sm mb-4">RSUD Talaud berhasil mencapai zero fall rate selama 3 bulan berturut-turut...</p>
+                        <a href="#" class="text-blue-600 hover:text-blue-700 font-medium text-sm">Baca Selengkapnya →</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="kontak" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-gray-900 mb-4">Kontak & Pelaporan</h3>
+                <p class="text-lg text-gray-600">
+                    Hubungi kami untuk informasi lebih lanjut atau laporkan insiden keselamatan
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Contact Information -->
+                <div class="space-y-6">
+                    <h4 class="text-xl font-semibold mb-4">Informasi Kontak</h4>
+                    
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <i data-lucide="phone" class="h-6 w-6 text-blue-600"></i>
+                        </div>
+                        <div>
+                            <p class="font-semibold">Hotline Darurat</p>
+                            <p class="text-gray-600">(0432) 12345</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
+                            <i data-lucide="alert-triangle" class="h-6 w-6 text-red-600"></i>
+                        </div>
+                        <div>
+                            <p class="font-semibold">Pelaporan Insiden</p>
+                            <p class="text-gray-600">ext. 1239</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                            <i data-lucide="mail" class="h-6 w-6 text-green-600"></i>
+                        </div>
+                        <div>
+                            <p class="font-semibold">Email</p>
+                            <p class="text-gray-600">mfk@rsudtalaud.go.id</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                            <i data-lucide="map-pin" class="h-6 w-6 text-purple-600"></i>
+                        </div>
+                        <div>
+                            <p class="font-semibold">Lokasi</p>
+                            <p class="text-gray-600">Jl. Rumah Sakit No. 1, Melonguane</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Report Form -->
+                <div class="bg-white rounded-lg p-6 shadow-sm">
+                    <h4 class="text-xl font-semibold mb-4">Laporkan Insiden</h4>
+                    <form class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Jenis Insiden</label>
+                            <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option>Pilih jenis insiden</option>
+                                <option>Kecelakaan Pasien</option>
+                                <option>Insiden K3</option>
+                                <option>Kebakaran</option>
+                                <option>Lainnya</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Lokasi</label>
+                            <input type="text" placeholder="Contoh: Ruang ICU, Lantai 2" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Deskripsi</label>
+                            <textarea rows="4" placeholder="Jelaskan secara detail apa yang terjadi..." class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                        </div>
+
+                        <div class="flex items-center">
+                            <input type="checkbox" id="anonymous" class="mr-2">
+                            <label for="anonymous" class="text-sm text-gray-700">Laporkan secara anonim</label>
+                        </div>
+
+                        <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">
+                            <i data-lucide="send" class="h-4 w-4 mr-2 inline"></i>
+                            Kirim Laporan
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-6 text-center">
-            <p>&copy; 2025 Manajemen Fasilitas dan Keselamatan (MFK) RSUD Kab. Kepl. Talaud. Semua Hak Cipta Dilindungi.</p>
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Logo & Description -->
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i data-lucide="shield" class="h-8 w-8 text-blue-400"></i>
+                        <span class="text-xl font-bold">MFK RSUD Talaud</span>
+                    </div>
+                    <p class="text-gray-400">
+                        Manajemen Fasilitas Keselamatan RSUD Talaud - 
+                        Komitmen untuk keselamatan tertinggi.
+                    </p>
+                </div>
+
+                <!-- Quick Services -->
+                <div>
+                    <h4 class="font-semibold mb-4">Layanan Cepat</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#kontak" class="hover:text-white transition-colors">Pelaporan Insiden</a></li>
+                        <li><a href="#standar" class="hover:text-white transition-colors">Standar Keselamatan</a></li>
+                        <li><a href="#layanan" class="hover:text-white transition-colors">Prosedur K3</a></li>
+                        <li><a href="#kontak" class="hover:text-white transition-colors">Kontak Darurat</a></li>
+                    </ul>
+                </div>
+
+                <!-- Information -->
+                <div>
+                    <h4 class="font-semibold mb-4">Informasi</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#tentang" class="hover:text-white transition-colors">Tentang Kami</a></li>
+                        <li><a href="#tentang" class="hover:text-white transition-colors">Struktur Organisasi</a></li>
+                        <li><a href="#standar" class="hover:text-white transition-colors">Laporan Tahunan</a></li>
+                        <li><a href="#berita" class="hover:text-white transition-colors">Berita & Artikel</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="font-semibold mb-4">Kontak</h4>
+                    <div class="space-y-2 text-gray-400">
+                        <p>📞 (0432) 12345</p>
+                        <p>✉️ mfk@rsudtalaud.go.id</p>
+                        <p>📍 Jl. Rumah Sakit No. 1, Melonguane</p>
+                        <p>🕐 Senin - Jumat: 08:00 - 16:00</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2024 MFK RSUD Talaud. Semua hak dilindungi.</p>
+            </div>
         </div>
     </footer>
 
-    <!-- Script untuk Menu Mobile -->
-    <script>
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 invisible">
+        <i data-lucide="arrow-up" class="h-5 w-5"></i>
+    </button>
 
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+    <!-- JavaScript -->
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+        function openMobileMenu() {
+            mobileMenu.classList.add('active');
+            mobileMenuOverlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('active');
+            mobileMenuOverlay.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        mobileMenuBtn.addEventListener('click', openMobileMenu);
+        closeMenuBtn.addEventListener('click', closeMobileMenu);
+        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+
+        // Close mobile menu when clicking on links
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
         });
 
-        // Tutup menu saat link di-klik
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
+        // Back to Top Button
+        const backToTopBtn = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.remove('opacity-0', 'invisible');
+                backToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopBtn.classList.add('opacity-0', 'invisible');
+                backToTopBtn.classList.remove('opacity-100', 'visible');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
         });
-    </script>
 
+        // Form submission
+        const reportForm = document.querySelector('form');
+        reportForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Show success message
+            const successMessage = document.createElement('div');
+            successMessage.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 fade-in';
+            successMessage.innerHTML = `
+                <div class="flex items-center">
+                    <i data-lucide="check-circle" class="h-5 w-5 mr-2"></i>
+                    <span>Laporan berhasil dikirim!</span>
+                </div>
+            `;
+            document.body.appendChild(successMessage);
+            lucide.createIcons();
+            
+            // Reset form
+            reportForm.reset();
+            
+            // Remove message after 3 seconds
+            setTimeout(() => {
+                successMessage.remove();
+            }, 3000);
+        });
+
+        // Add fade-in animation to elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Active navigation highlighting
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('nav a[href^="#"]');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-blue-600', 'font-medium');
+                link.classList.add('text-gray-600');
+                
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.remove('text-gray-600');
+                    link.classList.add('text-blue-600', 'font-medium');
+                }
+            });
+        });
+
+        // Download functionality for standards
+        document.querySelectorAll('a[href="#"]').forEach(link => {
+            if (link.textContent.includes('Download') || link.querySelector('[data-lucide="download"]')) {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    // Show download message
+                    const downloadMessage = document.createElement('div');
+                    downloadMessage.className = 'fixed top-4 right-4 bg-blue-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 fade-in';
+                    downloadMessage.innerHTML = `
+                        <div class="flex items-center">
+                            <i data-lucide="download" class="h-5 w-5 mr-2"></i>
+                            <span>File sedang diunduh...</span>
+                        </div>
+                    `;
+                    document.body.appendChild(downloadMessage);
+                    lucide.createIcons();
+                    
+                    // Remove message after 2 seconds
+                    setTimeout(() => {
+                        downloadMessage.remove();
+                    }, 2000);
+                });
+            }
+        });
+    </script>
 </body>
 </html>
