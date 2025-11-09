@@ -6,6 +6,9 @@
     <title>Pendaftaran SKBS & SKBN - RSUD Talaud</title>
     <!-- Menggunakan Tailwind CSS untuk gaya yang modern dan bersih -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tambahkan SDK Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-database-compat.js"></script>
     <style>
         /* Gaya khusus untuk animasi sederhana */
         .fade-in {
@@ -22,7 +25,7 @@
     <header class="bg-blue-800 text-white shadow-lg">
         <div class="container mx-auto px-4 py-6">
             <h1 class="text-3xl font-bold">RSUD Talaud</h1>
-            <p class="text-lg">Sistem Pendaftaran SKBS & SKBN</p>
+            <p class="text-lg">Sistem Pendaftaran SKBS & SKBN (Online)</p>
         </div>
     </header>
 
@@ -46,7 +49,6 @@
                             <select id="umur" name="umur" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                                 <option value="">-- Pilih Umur --</option>
                                 <script>
-                                    // Generate opsi umur dari 17 hingga 70 tahun
                                     for(let i = 17; i <= 70; i++) {
                                         document.write(`<option value="${i}">${i} Tahun</option>`);
                                     }
@@ -85,7 +87,6 @@
                             <select id="tinggiBadan" name="tinggiBadan" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                                 <option value="">-- Pilih --</option>
                                 <script>
-                                    // Generate opsi tinggi badan dari 140 hingga 200 cm
                                     for(let i = 140; i <= 200; i++) {
                                         document.write(`<option value="${i}">${i} Cm</option>`);
                                     }
@@ -97,7 +98,6 @@
                             <select id="beratBadan" name="beratBadan" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                                 <option value="">-- Pilih --</option>
                                 <script>
-                                    // Generate opsi berat badan dari 40 hingga 120 kg
                                     for(let i = 40; i <= 120; i++) {
                                         document.write(`<option value="${i}">${i} Kg</option>`);
                                     }
@@ -118,10 +118,9 @@
 
             <!-- Data Tersimpan -->
             <section class="bg-white p-6 rounded-lg shadow-md">
-                <h2 class="text-2xl font-semibold mb-6 text-gray-800 border-b pb-2">Data Pendaftar Tersimpan</h2>
+                <h2 class="text-2xl font-semibold mb-6 text-gray-800 border-b pb-2">Data Pendaftar Tersimpan (Online)</h2>
                 <div id="dataContainer" class="space-y-4 max-h-96 overflow-y-auto">
-                    <!-- Data akan dimuat di sini oleh JavaScript -->
-                    <p class="text-gray-500 italic">Belum ada data pendaftar.</p>
+                    <p class="text-gray-500 italic">Memuat data...</p>
                 </div>
             </section>
         </div>
@@ -133,38 +132,39 @@
     </footer>
 
     <script>
+        // TODO: GANTI DENGAN KONFIGURASI FIREBASE ANDA
+        const firebaseConfig = {
+            // apiKey: "...", // https://console.firebase.google.com/u/0/project/pendaftaranrsudtalaud/database/pendaftaranrsudtalaud-default-rtdb/data/~2F?hl=id
+            databaseURL: "https://console.firebase.google.com/u/0/project/pendaftaranrsudtalaud/database/pendaftaranrsudtalaud-default-rtdb/data/~2F?hl=id" 
+        };
+
+        // Inisialisasi Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
         // Dapatkan elemen form dan container data
         const form = document.getElementById('registrationForm');
         const dataContainer = document.getElementById('dataContainer');
 
-        // Fungsi untuk memuat data dari Local Storage saat halaman dibuka
-        const loadData = () => {
-            const storedData = localStorage.getItem('pendaftaranRSUDTalaud');
-            return storedData ? JSON.parse(storedData) : [];
-        };
-
-        // Fungsi untuk menyimpan data ke Local Storage
-        const saveData = (data) => {
-            localStorage.setItem('pendaftaranRSUDTalaud', JSON.stringify(data));
-        };
-
-        // Fungsi untuk menampilkan data ke dalam HTML
-        const renderData = () => {
-            const allData = loadData();
+        // Fungsi untuk menampilkan data dari Firebase ke HTML
+        const renderData = (snapshot) => {
             dataContainer.innerHTML = ''; // Kosongkan container dulu
+            const allData = snapshot.val();
 
-            if (allData.length === 0) {
+            if (!allData) {
                 dataContainer.innerHTML = '<p class="text-gray-500 italic">Belum ada data pendaftar.</p>';
                 return;
             }
 
-            allData.forEach((data, index) => {
+            // Ubah object data menjadi array untuk memudahkan looping
+            const dataEntries = Object.entries(allData).reverse(); // .reverse() agar data terbaru di atas
+
+            dataEntries.forEach(([id, data]) => {
                 const dataCard = document.createElement('div');
                 dataCard.className = 'p-4 border rounded-lg bg-gray-50 fade-in';
-                // Menambahkan satuan pada data yang ditampilkan agar lebih jelas
                 dataCard.innerHTML = `
                     <h3 class="font-bold text-lg text-blue-700">${data.nama}</h3>
-                    <p class="text-sm text-gray-600">Pendaftaran ke-${index + 1}</p>
+                    <p class="text-sm text-gray-600">ID: ${id}</p>
                     <div class="mt-2 text-sm">
                         <p><span class="font-semibold">Umur:</span> ${data.umur} Tahun</p>
                         <p><span class="font-semibold">Jenis Kelamin:</span> ${data.jenisKelamin}</p>
@@ -182,7 +182,7 @@
         form.addEventListener('submit', (event) => {
             event.preventDefault(); // Mencegah halaman reload
 
-            // 1. Ambil semua data dari form
+            // Ambil semua data dari form
             const formData = new FormData(form);
             const newData = {
                 nama: formData.get('nama'),
@@ -195,25 +195,23 @@
                 tekananDarah: formData.get('tekananDarah'),
             };
 
-            // 2. Muat data yang sudah ada, tambahkan data baru
-            const allData = loadData();
-            allData.push(newData);
-
-            // 3. Simpan kembali ke Local Storage
-            saveData(allData);
-
-            // 4. Tampilkan kembali data yang sudah diperbarui
-            renderData();
-
-            // 5. Kosongkan form
-            form.reset();
-
-            // 6. Tampilkan notifikasi sukses
-            alert('Pendaftaran berhasil! Data telah disimpan di browser ini.');
+            // Simpan data ke Firebase Realtime Database
+            database.ref('pendaftaran').push(newData, (error) => {
+                if (error) {
+                    alert('Gagal menyimpan data. Coba lagi.');
+                } else {
+                    // Kosongkan form
+                    form.reset();
+                    // Tampilkan notifikasi sukses
+                    alert('Pendaftaran berhasil! Data telah tersimpan online.');
+                }
+            });
         });
 
-        // Tampilkan data yang ada saat halaman pertama kali dimuat
-        document.addEventListener('DOMContentLoaded', renderData);
+        // Listener untuk memuat data secara real-time dari Firebase
+        database.ref('pendaftaran').on('value', (snapshot) => {
+            renderData(snapshot);
+        });
     </script>
 </body>
 </html>
