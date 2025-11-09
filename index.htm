@@ -3,1113 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laporan Inspeksi K3RS RSUD Talaud</title>
+    <title>Pendaftaran SKBS & SKBN - RSUD Talaud</title>
+    <!-- Menggunakan Tailwind CSS untuk gaya yang modern dan bersih -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        /* Custom scrollbar styling */
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 6px;
+        /* Gaya khusus untuk animasi sederhana */
+        .fade-in {
+            animation: fadeIn 0.5s;
         }
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 3px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 3px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #555;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-green-50 to-gray-50">
+<body class="bg-gray-100">
     <!-- Header -->
-    <header class="bg-green-800 text-white shadow-lg">
+    <header class="bg-blue-800 text-white shadow-lg">
         <div class="container mx-auto px-4 py-6">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-4">
-                    <div>
-                        <h1 class="text-2xl md:text-3xl font-bold">Laporan Inspeksi K3RS RSUD Talaud</h1>
-                        <p class="text-green-100 text-sm md:text-base">Formulir Pemeriksaan Keselamatan dan Kesehatan Kerja Rumah Sakit</p>
-                    </div>
-                </div>
-            </div>
+            <h1 class="text-3xl font-bold">RSUD Talaud</h1>
+            <p class="text-lg">Sistem Pendaftaran SKBS & SKBN</p>
         </div>
     </header>
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-8">
-        <div class="grid gap-6">
-            
-            <!-- Identitas Pemeriksaan -->
-            <div class="bg-white rounded-lg shadow-md">
-                <div class="p-6 border-b border-gray-200">
-                    <h2 class="text-lg font-semibold flex items-center gap-2">
-                        <i data-lucide="user" class="w-5 h-5"></i>
-                        Identitas Pemeriksaan
-                    </h2>
-                </div>
-                <div class="p-6 grid md:grid-cols-2 gap-4">
-                    <div>
-                        <label for="tanggal" class="block text-sm font-medium text-gray-700 mb-1">Tanggal Inspeksi</label>
-                        <input
-                            type="date"
-                            id="tanggal"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                        />
-                    </div>
-                    <div>
-                        <label for="lokasi" class="block text-sm font-medium text-gray-700 mb-1">Lokasi / Unit yang Diperiksa</label>
-                        <input
-                            type="text"
-                            id="lokasi"
-                            placeholder="Contoh: IGD, Ruang Operasi, Lab"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                        />
-                    </div>
-                    <div>
-                        <label for="namaPemeriksa" class="block text-sm font-medium text-gray-700 mb-1">Nama Pemeriksa</label>
-                        <input
-                            type="text"
-                            id="namaPemeriksa"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                        />
-                    </div>
-                    <div>
-                        <label for="jabatan" class="block text-sm font-medium text-gray-700 mb-1">Jabatan Pemeriksa</label>
-                        <input
-                            type="text"
-                            id="jabatan"
-                            placeholder="Contoh: Ketua K3RS, Safety Officer"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                        />
-                    </div>
-                </div>
-            </div>
-
-            <!-- Aspek Pemeriksaan K3RS -->
-            <div class="bg-white rounded-lg shadow-md">
-                <div class="border-b border-gray-200">
-                    <nav class="flex space-x-8 px-6" aria-label="Tabs">
-                        <button onclick="switchTab('keselamatan')" class="tab-btn py-4 px-1 border-b-2 font-medium text-sm border-green-500 text-green-600" data-tab="keselamatan">
-                            Keselamatan Umum
-                        </button>
-                        <button onclick="switchTab('lingkungan')" class="tab-btn py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="lingkungan">
-                            Kesehatan Lingkungan
-                        </button>
-                        <button onclick="switchTab('peralatan')" class="tab-btn py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="peralatan">
-                            Peralatan & Listrik
-                        </button>
-                        <button onclick="switchTab('apd')" class="tab-btn py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="apd">
-                            APD
-                        </button>
-                    </nav>
-                </div>
-
-                <!-- Tab Content -->
-                <div class="p-6">
-                    <!-- Keselamatan Umum -->
-                    <div id="keselamatan" class="tab-content space-y-4">
-                        <h3 class="text-lg font-semibold flex items-center gap-2">
-                            <i data-lucide="shield" class="w-5 h-5"></i>
-                            A. Keselamatan Umum
-                        </h3>
-                        <div class="space-y-3">
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" class="keselamatan-checkbox rounded text-green-600 focus:ring-green-500" data-item="jalurEvakuasi">
-                                <span class="text-sm">Jalur evakuasi jelas & bebas hambatan</span>
-                            </label>
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" class="keselamatan-checkbox rounded text-green-600 focus:ring-green-500" data-item="alatPemadam">
-                                <span class="text-sm">Alat pemadam api tersedia & berfungsi</span>
-                            </label>
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" class="keselamatan-checkbox rounded text-green-600 focus:ring-green-500" data-item="penerangan">
-                                <span class="text-sm">Penerangan memadai</span>
-                            </label>
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" class="keselamatan-checkbox rounded text-green-600 focus:ring-green-500" data-item="lantaiTidakLicin">
-                                <span class="text-sm">Lantai tidak licin</span>
-                            </label>
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" class="keselamatan-checkbox rounded text-green-600 focus:ring-green-500" data-item="tandaKeselamatan">
-                                <span class="text-sm">Tanda keselamatan terlihat jelas</span>
-                            </label>
-                        </div>
-                        <div>
-                            <label for="catatanKeselamatan" class="block text-sm font-medium text-gray-700 mb-1">Catatan / Temuan:</label>
-                            <textarea
-                                id="catatanKeselamatan"
-                                rows="3"
-                                placeholder="Catat temuan atau rekomendasi..."
-                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                            ></textarea>
-                        </div>
-                    </div>
-
-                    <!-- Kesehatan Lingkungan -->
-                    <div id="lingkungan" class="tab-content space-y-4 hidden">
-                        <h3 class="text-lg font-semibold flex items-center gap-2">
-                            <i data-lucide="shield" class="w-5 h-5"></i>
-                            B. Kesehatan Lingkungan
-                        </h3>
-                        <div class="space-y-3">
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" class="lingkungan-checkbox rounded text-green-600 focus:ring-green-500" data-item="ventilasi">
-                                <span class="text-sm">Ventilasi baik</span>
-                            </label>
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" class="lingkungan-checkbox rounded text-green-600 focus:ring-green-500" data-item="suhuKelembapan">
-                                <span class="text-sm">Suhu dan kelembapan terkontrol</span>
-                            </label>
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" class="lingkungan-checkbox rounded text-green-600 focus:ring-green-500" data-item="limbahMedis">
-                                <span class="text-sm">Limbah medis dikelola sesuai SOP</span>
-                            </label>
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" class="lingkungan-checkbox rounded text-green-600 focus:ring-green-500" data-item="areaBersih">
-                                <span class="text-sm">Area bersih dan bebas bau</span>
-                            </label>
-                        </div>
-                        <div>
-                            <label for="catatanLingkungan" class="block text-sm font-medium text-gray-700 mb-1">Catatan / Temuan:</label>
-                            <textarea
-                                id="catatanLingkungan"
-                                rows="3"
-                                placeholder="Catat temuan atau rekomendasi..."
-                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                            ></textarea>
-                        </div>
-                    </div>
-
-                    <!-- Peralatan & Listrik -->
-                    <div id="peralatan" class="tab-content space-y-4 hidden">
-                        <h3 class="text-lg font-semibold flex items-center gap-2">
-                            <i data-lucide="shield" class="w-5 h-5"></i>
-                            C. Peralatan & Listrik
-                        </h3>
-                        <div class="space-y-3">
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" class="peralatan-checkbox rounded text-green-600 focus:ring-green-500" data-item="kabelRapi">
-                                <span class="text-sm">Kabel rapi dan aman</span>
-                            </label>
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" class="peralatan-checkbox rounded text-green-600 focus:ring-green-500" data-item="panelTerkunci">
-                                <span class="text-sm">Panel listrik terkunci</span>
-                            </label>
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" class="peralatan-checkbox rounded text-green-600 focus:ring-green-500" data-item="grounding">
-                                <span class="text-sm">Grounding peralatan berfungsi</span>
-                            </label>
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" class="peralatan-checkbox rounded text-green-600 focus:ring-green-500" data-item="peralatanRutin">
-                                <span class="text-sm">Peralatan medis diperiksa rutin</span>
-                            </label>
-                        </div>
-                        <div>
-                            <label for="catatanPeralatan" class="block text-sm font-medium text-gray-700 mb-1">Catatan / Temuan:</label>
-                            <textarea
-                                id="catatanPeralatan"
-                                rows="3"
-                                placeholder="Catat temuan atau rekomendasi..."
-                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                            ></textarea>
-                        </div>
-                    </div>
-
-                    <!-- APD -->
-                    <div id="apd" class="tab-content space-y-4 hidden">
-                        <h3 class="text-lg font-semibold flex items-center gap-2">
-                            <i data-lucide="shield" class="w-5 h-5"></i>
-                            D. APD (Alat Pelindung Diri)
-                        </h3>
-                        <div class="space-y-3">
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" class="apd-checkbox rounded text-green-600 focus:ring-green-500" data-item="petugasAPD">
-                                <span class="text-sm">Petugas menggunakan APD sesuai standar</span>
-                            </label>
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" class="apd-checkbox rounded text-green-600 focus:ring-green-500" data-item="apdTersedia">
-                                <span class="text-sm">APD tersedia dalam jumlah cukup</span>
-                            </label>
-                            <label class="flex items-center space-x-2">
-                                <input type="checkbox" class="apd-checkbox rounded text-green-600 focus:ring-green-500" data-item="apdKondisiBaik">
-                                <span class="text-sm">APD dalam kondisi baik</span>
-                            </label>
-                        </div>
-                        <div>
-                            <label for="catatanAPD" class="block text-sm font-medium text-gray-700 mb-1">Catatan / Temuan:</label>
-                            <textarea
-                                id="catatanAPD"
-                                rows="3"
-                                placeholder="Catat temuan atau rekomendasi..."
-                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                            ></textarea>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Penilaian Umum -->
-            <div class="bg-white rounded-lg shadow-md">
-                <div class="p-6 border-b border-gray-200">
-                    <h2 class="text-lg font-semibold flex items-center gap-2">
-                        <i data-lucide="file-text" class="w-5 h-5"></i>
-                        Penilaian Umum
-                    </h2>
-                </div>
-                <div class="p-6 space-y-4">
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Skor Kepatuhan (0–100)</label>
-                            <div class="mt-2">
-                                <div class="flex items-center justify-between mb-2">
-                                    <span id="scoreDisplay" class="text-2xl font-bold text-green-600">0%</span>
-                                    <span id="riskBadge" class="px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800">
-                                        RENDAH
-                                    </span>
-                                </div>
-                                <div class="w-full bg-gray-200 rounded-full h-2">
-                                    <div id="scoreProgress" class="bg-green-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Tingkat Risiko</label>
-                            <div class="space-y-2">
-                                <label class="flex items-center space-x-2">
-                                    <input type="radio" name="tingkatRisiko" value="rendah" checked class="text-green-600 focus:ring-green-500">
-                                    <span class="text-sm">Rendah</span>
-                                </label>
-                                <label class="flex items-center space-x-2">
-                                    <input type="radio" name="tingkatRisiko" value="sedang" class="text-green-600 focus:ring-green-500">
-                                    <span class="text-sm">Sedang</span>
-                                </label>
-                                <label class="flex items-center space-x-2">
-                                    <input type="radio" name="tingkatRisiko" value="tinggi" class="text-green-600 focus:ring-green-500">
-                                    <span class="text-sm">Tinggi</span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <label for="rekomendasi" class="block text-sm font-medium text-gray-700 mb-1">Rekomendasi Perbaikan:</label>
-                        <textarea
-                            id="rekomendasi"
-                            rows="3"
-                            placeholder="Tuliskan rekomendasi perbaikan yang diperlukan..."
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                        ></textarea>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Aksi Buttons -->
-            <div class="bg-white rounded-lg shadow-md">
-                <div class="p-6">
-                    <div class="flex flex-wrap gap-3 justify-center">
-                        <button
-                            onclick="saveReport()"
-                            class="bg-green-700 hover:bg-green-800 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200 flex items-center gap-2"
-                        >
-                            <i data-lucide="download" class="w-4 h-4"></i>
-                            <span id="saveButtonText">💾 Simpan Laporan</span>
-                        </button>
-                        <button
-                            onclick="resetForm()"
-                            class="border border-gray-400 text-gray-600 hover:bg-gray-50 font-medium py-2 px-4 rounded-md transition-colors duration-200 flex items-center gap-2"
-                        >
-                            <i data-lucide="refresh-cw" class="w-4 h-4"></i>
-                            Reset Formulir
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Daftar Laporan Tersimpan -->
-            <div id="savedReportsSection" class="bg-white rounded-lg shadow-md hidden">
-                <div class="p-6 border-b border-gray-200">
-                    <h2 class="text-lg font-semibold flex items-center gap-2">
-                        <i data-lucide="file-text" class="w-5 h-5"></i>
-                        📋 Daftar Laporan Tersimpan (<span id="reportCount">0</span>)
-                    </h2>
-                </div>
-                <div class="p-6">
-                    <div id="reportsList" class="space-y-3 max-h-96 overflow-y-auto custom-scrollbar">
-                        <!-- Reports will be inserted here -->
-                    </div>
-                </div>
-            </div>
-
-            <!-- Ringkasan (muncul setelah submit) -->
-            <div id="summarySection" class="bg-white rounded-lg shadow-md hidden">
-                <div class="p-6 border-b border-gray-200">
-                    <h2 class="text-lg font-semibold flex items-center gap-2">
-                        <i data-lucide="file-text" class="w-5 h-5"></i>
-                        Ringkasan Laporan Inspeksi
-                    </h2>
-                </div>
-                <div class="p-6">
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div class="space-y-3">
-                            <div>
-                                <span class="font-semibold">Tanggal:</span> <span id="summaryTanggal">-</span>
-                            </div>
-                            <div>
-                                <span class="font-semibold">Lokasi:</span> <span id="summaryLokasi">-</span>
-                            </div>
-                            <div>
-                                <span class="font-semibold">Pemeriksa:</span> <span id="summaryPemeriksa">-</span>
-                            </div>
-                            <div>
-                                <span class="font-semibold">Skor Kepatuhan:</span> 
-                                <span id="summarySkor" class="ml-2 font-bold text-green-600">0%</span>
-                            </div>
-                            <div>
-                                <span class="font-semibold">Tingkat Risiko:</span>
-                                <span id="summaryRisiko" class="ml-2 px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800">
-                                    RENDAH
-                                </span>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="font-semibold mb-2">Rekomendasi:</div>
-                            <p id="summaryRekomendasi" class="text-sm text-gray-600">Tidak ada rekomendasi</p>
-                        </div>
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Form Pendaftaran -->
+            <section class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-2xl font-semibold mb-6 text-gray-800 border-b pb-2">Formulir Pendaftaran</h2>
+                <form id="registrationForm">
+                    <!-- Nama -->
+                    <div class="mb-4">
+                        <label for="nama" class="block text-gray-700 font-bold mb-2">Nama Lengkap</label>
+                        <input type="text" id="nama" name="nama" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
                     
-                    <!-- Mini Chart -->
-                    <div class="mt-6 pt-6 border-t">
-                        <h4 class="font-semibold mb-4">Grafik Kepatuhan per Kategori</h4>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            <div class="text-center">
-                                <div class="text-sm font-medium">Keselamatan</div>
-                                <div class="text-2xl font-bold text-green-600">
-                                    <span id="chartKeselamatan">0</span>/5
-                                </div>
-                                <div class="w-full bg-gray-200 rounded-full h-2 mt-1">
-                                    <div id="progressKeselamatan" class="bg-green-600 h-2 rounded-full" style="width: 0%"></div>
-                                </div>
-                            </div>
-                            <div class="text-center">
-                                <div class="text-sm font-medium">Lingkungan</div>
-                                <div class="text-2xl font-bold text-green-600">
-                                    <span id="chartLingkungan">0</span>/4
-                                </div>
-                                <div class="w-full bg-gray-200 rounded-full h-2 mt-1">
-                                    <div id="progressLingkungan" class="bg-green-600 h-2 rounded-full" style="width: 0%"></div>
-                                </div>
-                            </div>
-                            <div class="text-center">
-                                <div class="text-sm font-medium">Peralatan</div>
-                                <div class="text-2xl font-bold text-green-600">
-                                    <span id="chartPeralatan">0</span>/4
-                                </div>
-                                <div class="w-full bg-gray-200 rounded-full h-2 mt-1">
-                                    <div id="progressPeralatan" class="bg-green-600 h-2 rounded-full" style="width: 0%"></div>
-                                </div>
-                            </div>
-                            <div class="text-center">
-                                <div class="text-sm font-medium">APD</div>
-                                <div class="text-2xl font-bold text-green-600">
-                                    <span id="chartAPD">0</span>/3
-                                </div>
-                                <div class="w-full bg-gray-200 rounded-full h-2 mt-1">
-                                    <div id="progressAPD" class="bg-green-600 h-2 rounded-full" style="width: 0%"></div>
-                                </div>
+                    <!-- Umur dan Jenis Kelamin -->
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <label for="umur" class="block text-gray-700 font-bold mb-2">Umur</label>
+                            <select id="umur" name="umur" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="">-- Pilih Umur --</option>
+                                <script>
+                                    // Generate opsi umur dari 17 hingga 70 tahun
+                                    for(let i = 17; i <= 70; i++) {
+                                        document.write(`<option value="${i}">${i} Tahun</option>`);
+                                    }
+                                </script>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-bold mb-2">Jenis Kelamin</label>
+                            <div class="flex items-center space-x-4 mt-2">
+                                <label class="flex items-center">
+                                    <input type="radio" name="jenisKelamin" value="Laki-laki" required class="mr-2">
+                                    <span>Laki-laki</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="radio" name="jenisKelamin" value="Perempuan" required class="mr-2">
+                                    <span>Perempuan</span>
+                                </label>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Pekerjaan dan Alamat -->
+                    <div class="mb-4">
+                        <label for="pekerjaan" class="block text-gray-700 font-bold mb-2">Pekerjaan</label>
+                        <input type="text" id="pekerjaan" name="pekerjaan" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div class="mb-4">
+                        <label for="alamat" class="block text-gray-700 font-bold mb-2">Alamat Lengkap</label>
+                        <textarea id="alamat" name="alamat" rows="3" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                    </div>
+
+                    <!-- Tinggi, Berat, Tekanan Darah -->
+                    <div class="grid grid-cols-3 gap-4 mb-6">
+                        <div>
+                            <label for="tinggiBadan" class="block text-gray-700 font-bold mb-2">Tinggi Badan</label>
+                            <select id="tinggiBadan" name="tinggiBadan" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="">-- Pilih --</option>
+                                <script>
+                                    // Generate opsi tinggi badan dari 140 hingga 200 cm
+                                    for(let i = 140; i <= 200; i++) {
+                                        document.write(`<option value="${i}">${i} Cm</option>`);
+                                    }
+                                </script>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="beratBadan" class="block text-gray-700 font-bold mb-2">Berat Badan</label>
+                            <select id="beratBadan" name="beratBadan" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="">-- Pilih --</option>
+                                <script>
+                                    // Generate opsi berat badan dari 40 hingga 120 kg
+                                    for(let i = 40; i <= 120; i++) {
+                                        document.write(`<option value="${i}">${i} Kg</option>`);
+                                    }
+                                </script>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="tekananDarah" class="block text-gray-700 font-bold mb-2">Tekanan Darah</label>
+                            <input type="text" id="tekananDarah" name="tekananDarah" placeholder="contoh: 120/80" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300">
+                        Daftar Sekarang
+                    </button>
+                </form>
+            </section>
+
+            <!-- Data Tersimpan -->
+            <section class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-2xl font-semibold mb-6 text-gray-800 border-b pb-2">Data Pendaftar Tersimpan</h2>
+                <div id="dataContainer" class="space-y-4 max-h-96 overflow-y-auto">
+                    <!-- Data akan dimuat di sini oleh JavaScript -->
+                    <p class="text-gray-500 italic">Belum ada data pendaftar.</p>
                 </div>
-            </div>
+            </section>
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-green-800 text-white py-6 mt-12">
-        <div class="container mx-auto px-4 text-center">
-            <p class="text-sm">© 2025 RSUD Talaud — Tim K3RS</p>
-        </div>
+    <footer class="bg-gray-800 text-white text-center py-4 mt-12">
+        <p>&copy; 2024 RSUD Talaud. Hak Cipta Dilindungi.</p>
     </footer>
 
     <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
+        // Dapatkan elemen form dan container data
+        const form = document.getElementById('registrationForm');
+        const dataContainer = document.getElementById('dataContainer');
 
-        // Global state
-        let savedReports = JSON.parse(localStorage.getItem('k3rsReports') || '[]');
-        let currentReport = {};
+        // Fungsi untuk memuat data dari Local Storage saat halaman dibuka
+        const loadData = () => {
+            const storedData = localStorage.getItem('pendaftaranRSUDTalaud');
+            return storedData ? JSON.parse(storedData) : [];
+        };
 
-        // Initialize date field with today's date
-        document.getElementById('tanggal').value = new Date().toISOString().split('T')[0];
+        // Fungsi untuk menyimpan data ke Local Storage
+        const saveData = (data) => {
+            localStorage.setItem('pendaftaranRSUDTalaud', JSON.stringify(data));
+        };
 
-        // Load saved reports on page load
-        loadSavedReports();
+        // Fungsi untuk menampilkan data ke dalam HTML
+        const renderData = () => {
+            const allData = loadData();
+            dataContainer.innerHTML = ''; // Kosongkan container dulu
 
-        // Tab switching
-        function switchTab(tabName) {
-            // Hide all tab contents
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.add('hidden');
-            });
-            
-            // Remove active state from all tabs
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('border-green-500', 'text-green-600');
-                btn.classList.add('border-transparent', 'text-gray-500');
-            });
-            
-            // Show selected tab content
-            document.getElementById(tabName).classList.remove('hidden');
-            
-            // Add active state to selected tab
-            const activeBtn = document.querySelector(`[data-tab="${tabName}"]`);
-            activeBtn.classList.remove('border-transparent', 'text-gray-500');
-            activeBtn.classList.add('border-green-500', 'text-green-600');
-        }
-
-        // Calculate compliance score
-        function calculateComplianceScore() {
-            const keselamatanChecks = document.querySelectorAll('.keselamatan-checkbox:checked').length;
-            const lingkunganChecks = document.querySelectorAll('.lingkungan-checkbox:checked').length;
-            const peralatanChecks = document.querySelectorAll('.peralatan-checkbox:checked').length;
-            const apdChecks = document.querySelectorAll('.apd-checkbox:checked').length;
-            
-            const totalChecks = 16; // 5 + 4 + 4 + 3
-            const totalPassed = keselamatanChecks + lingkunganChecks + peralatanChecks + apdChecks;
-            
-            return Math.round((totalPassed / totalChecks) * 100);
-        }
-
-        // Update score display
-        function updateScore() {
-            const score = calculateComplianceScore();
-            document.getElementById('scoreDisplay').textContent = score + '%';
-            document.getElementById('scoreProgress').style.width = score + '%';
-            
-            // Update score color
-            const scoreElement = document.getElementById('scoreDisplay');
-            scoreElement.classList.remove('text-green-600', 'text-yellow-600', 'text-red-600');
-            if (score >= 80) {
-                scoreElement.classList.add('text-green-600');
-            } else if (score >= 60) {
-                scoreElement.classList.add('text-yellow-600');
-            } else {
-                scoreElement.classList.add('text-red-600');
-            }
-        }
-
-        // Update risk badge
-        function updateRiskBadge() {
-            const selectedRisk = document.querySelector('input[name="tingkatRisiko"]:checked').value;
-            const badge = document.getElementById('riskBadge');
-            
-            badge.classList.remove('bg-green-100', 'text-green-800', 'bg-yellow-100', 'text-yellow-800', 'bg-red-100', 'text-red-800');
-            
-            switch(selectedRisk) {
-                case 'rendah':
-                    badge.classList.add('bg-green-100', 'text-green-800');
-                    badge.textContent = 'RENDAH';
-                    break;
-                case 'sedang':
-                    badge.classList.add('bg-yellow-100', 'text-yellow-800');
-                    badge.textContent = 'SEDANG';
-                    break;
-                case 'tinggi':
-                    badge.classList.add('bg-red-100', 'text-red-800');
-                    badge.textContent = 'TINGGI';
-                    break;
-            }
-        }
-
-        // Get form data
-        function getFormData() {
-            const keselamatanData = {};
-            document.querySelectorAll('.kesalaman-checkbox').forEach(checkbox => {
-                keselamatanData[checkbox.dataset.item] = checkbox.checked;
-            });
-            kesalamatanData.catatan = document.getElementById('catatanKeselamatan').value;
-
-            const lingkunganData = {};
-            document.querySelectorAll('.lingkungan-checkbox').forEach(checkbox => {
-                lingkunganData[checkbox.dataset.item] = checkbox.checked;
-            });
-            lingkunganData.catatan = document.getElementById('catatanLingkungan').value;
-
-            const peralatanData = {};
-            document.querySelectorAll('.peralatan-checkbox').forEach(checkbox => {
-                peralatanData[checkbox.dataset.item] = checkbox.checked;
-            });
-            peralatanData.catatan = document.getElementById('catatanPeralatan').value;
-
-            const apdData = {};
-            document.querySelectorAll('.apd-checkbox').forEach(checkbox => {
-                apdData[checkbox.dataset.item] = checkbox.checked;
-            });
-            apdData.catatan = document.getElementById('catatanAPD').value;
-
-            return {
-                tanggalInspeksi: document.getElementById('tanggal').value,
-                lokasiUnit: document.getElementById('lokasi').value,
-                namaPemeriksa: document.getElementById('namaPemeriksa').value,
-                jabatanPemeriksa: document.getElementById('jabatan').value,
-                keselamatanUmum: keselamatanData,
-                kesehatanLingkungan: lingkunganData,
-                peralatanListrik: peralatanData,
-                apd: apdData,
-                skorKepatuhan: calculateComplianceScore(),
-                tingkatRisiko: document.querySelector('input[name="tingkatRisiko"]:checked').value,
-                rekomendasi: document.getElementById('rekomendasi').value
-            };
-        }
-
-        // Save report
-        async function saveReport() {
-            const saveButton = document.getElementById('saveButtonText');
-            saveButton.textContent = 'Menyimpan...';
-            
-            try {
-                const formData = getFormData();
-                const newReport = {
-                    id: Date.now().toString(),
-                    ...formData,
-                    createdAt: new Date().toISOString()
-                };
-                
-                // Save to localStorage
-                savedReports.unshift(newReport);
-                localStorage.setItem('k3rsReports', JSON.stringify(savedReports));
-                
-                // Update UI
-                loadSavedReports();
-                showSummary(newReport);
-                
-                alert('Laporan berhasil disimpan secara permanen!');
-                resetForm();
-                
-            } catch (error) {
-                console.error('Error saving report:', error);
-                alert('Terjadi kesalahan. Silakan coba lagi.');
-            } finally {
-                saveButton.textContent = '💾 Simpan Laporan';
-            }
-        }
-
-        // Reset form
-        function resetForm() {
-            document.getElementById('tanggal').value = new Date().toISOString().split('T')[0];
-            document.getElementById('lokasi').value = '';
-            document.getElementById('namaPemeriksa').value = '';
-            document.getElementById('jabatan').value = '';
-            
-            // Reset all checkboxes
-            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-                checkbox.checked = false;
-            });
-            
-            // Reset all textareas
-            document.querySelectorAll('textarea').forEach(textarea => {
-                textarea.value = '';
-            });
-            
-            // Reset risk radio
-            document.querySelector('input[name="tingkatRisiko"][value="rendah"]').checked = true;
-            
-            // Update displays
-            updateScore();
-            updateRiskBadge();
-            
-            // Hide summary
-            document.getElementById('summarySection').classList.add('hidden');
-        }
-
-        // Load saved reports
-        function loadSavedReports() {
-            const reportsSection = document.getElementById('savedReportsSection');
-            const reportsList = document.getElementById('reportsList');
-            const reportCount = document.getElementById('reportCount');
-            
-            if (savedReports.length === 0) {
-                reportsSection.classList.add('hidden');
+            if (allData.length === 0) {
+                dataContainer.innerHTML = '<p class="text-gray-500 italic">Belum ada data pendaftar.</p>';
                 return;
             }
-            
-            reportsSection.classList.remove('hidden');
-            reportCount.textContent = savedReports.length;
-            
-            reportsList.innerHTML = savedReports.map(report => `
-                <div class="border rounded-lg p-4 hover:bg-gray-50 transition-colors">
-                    <div class="flex justify-between items-start">
-                        <div class="flex-1">
-                            <div class="flex items-center gap-2 mb-2">
-                                <span class="font-semibold">${report.lokasiUnit}</span>
-                                <span class="px-2 py-1 rounded-full text-xs font-semibold ${getRiskBadgeClass(report.tingkatRisiko)}">
-                                    ${report.tingkatRisiko.toUpperCase()}
-                                </span>
-                                <span class="text-sm font-bold ${getScoreColorClass(report.skorKepatuhan)}">
-                                    ${report.skorKepatuhan}%
-                                </span>
-                            </div>
-                            <div class="text-sm text-gray-600 grid grid-cols-2 md:grid-cols-4 gap-2">
-                                <div>📅 ${report.tanggalInspeksi}</div>
-                                <div>👤 ${report.namaPemeriksa}</div>
-                                <div>📝 ${report.jabatanPemeriksa}</div>
-                                <div>🕐 ${new Date(report.createdAt).toLocaleString('id-ID', { 
-                                    dateStyle: 'short', 
-                                    timeStyle: 'short' 
-                                })}</div>
-                            </div>
-                            ${report.rekomendasi ? `
-                                <div class="mt-2 text-sm">
-                                    <span class="font-medium">Rekomendasi:</span> 
-                                    <span class="text-gray-600 ml-1">${report.rekomendasi.substring(0, 100)}${report.rekomendasi.length > 100 ? '...' : ''}</span>
-                                </div>
-                            ` : ''}
-                        </div>
-                        <div class="flex gap-2 ml-4">
-                            <button
-                                onclick="downloadReport('${report.id}')"
-                                class="p-2 text-blue-600 border border-blue-600 rounded hover:bg-blue-50 transition-colors"
-                            >
-                                <i data-lucide="download" class="w-4 h-4"></i>
-                            </button>
-                            <button
-                                onclick="deleteReport('${report.id}')"
-                                class="p-2 text-red-600 border border-red-600 rounded hover:bg-red-50 transition-colors"
-                            >
-                                <i data-lucide="x-circle" class="w-4 h-4"></i>
-                            </button>
-                        </div>
+
+            allData.forEach((data, index) => {
+                const dataCard = document.createElement('div');
+                dataCard.className = 'p-4 border rounded-lg bg-gray-50 fade-in';
+                // Menambahkan satuan pada data yang ditampilkan agar lebih jelas
+                dataCard.innerHTML = `
+                    <h3 class="font-bold text-lg text-blue-700">${data.nama}</h3>
+                    <p class="text-sm text-gray-600">Pendaftaran ke-${index + 1}</p>
+                    <div class="mt-2 text-sm">
+                        <p><span class="font-semibold">Umur:</span> ${data.umur} Tahun</p>
+                        <p><span class="font-semibold">Jenis Kelamin:</span> ${data.jenisKelamin}</p>
+                        <p><span class="font-semibold">Pekerjaan:</span> ${data.pekerjaan}</p>
+                        <p><span class="font-semibold">Alamat:</span> ${data.alamat}</p>
+                        <p><span class="font-semibold">Data Fisik:</span> ${data.tinggiBadan} Cm / ${data.beratBadan} Kg</p>
+                        <p><span class="font-semibold">Tekanan Darah:</span> ${data.tekananDarah}</p>
                     </div>
-                </div>
-            `).join('');
-            
-            // Re-initialize Lucide icons for new content
-            lucide.createIcons();
-        }
-
-        // Get risk badge class
-        function getRiskBadgeClass(risk) {
-            switch(risk) {
-                case 'rendah': return 'bg-green-100 text-green-800';
-                case 'sedang': return 'bg-yellow-100 text-yellow-800';
-                case 'tinggi': return 'bg-red-100 text-red-800';
-                default: return 'bg-gray-100 text-gray-800';
-            }
-        }
-
-        // Get score color class
-        function getScoreColorClass(score) {
-            if (score >= 80) return 'text-green-600';
-            if (score >= 60) return 'text-yellow-600';
-            return 'text-red-600';
-        }
-
-        // Delete report
-        function deleteReport(reportId) {
-            if (confirm('Apakah Anda yakin ingin menghapus laporan ini?')) {
-                savedReports = savedReports.filter(report => report.id !== reportId);
-                localStorage.setItem('k3rsReports', JSON.stringify(savedReports));
-                loadSavedReports();
-                alert('Laporan berhasil dihapus');
-            }
-        }
-
-        // Download report
-        function downloadReport(reportId) {
-            const report = savedReports.find(r => r.id === reportId);
-            if (!report) return;
-            
-            const htmlContent = generateHTMLReport(report);
-            const blob = new Blob([htmlContent], { type: 'text/html' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `Laporan-Inspeksi-K3RS-${report.tanggalInspeksi}.html`;
-            a.click();
-            window.URL.revokeObjectURL(url);
-        }
-
-        // Show summary
-        function showSummary(report) {
-            document.getElementById('summaryTanggal').textContent = report.tanggalInspeksi;
-            document.getElementById('summaryLokasi').textContent = report.lokasiUnit;
-            document.getElementById('summaryPemeriksa').textContent = report.namaPemeriksa;
-            document.getElementById('summarySkor').textContent = report.skorKepatuhan + '%';
-            document.getElementById('summaryRekomendasi').textContent = report.rekomendasi || 'Tidak ada rekomendasi';
-            
-            // Update risk badge
-            const riskBadge = document.getElementById('summaryRisiko');
-            riskBadge.className = `ml-2 px-3 py-1 rounded-full text-xs font-semibold ${getRiskBadgeClass(report.tingkatRisiko)}`;
-            riskBadge.textContent = report.tingkatRisiko.toUpperCase();
-            
-            // Update score color
-            const scoreElement = document.getElementById('summarySkor');
-            scoreElement.className = `ml-2 font-bold ${getScoreColorClass(report.skorKepatuhan)}`;
-            
-            // Update charts
-            const keselamatanScore = Object.values(report.keselamatanUmum).filter(v => typeof v === 'boolean' && v).length;
-            const lingkunganScore = Object.values(report.kesehatanLingkungan).filter(v => typeof v === 'boolean' && v).length;
-            const peralatanScore = Object.values(report.peralatanListrik).filter(v => typeof v === 'boolean' && v).length;
-            const apdScore = Object.values(report.apd).filter(v => typeof v === 'boolean' && v).length;
-            
-            document.getElementById('chartKeselamatan').textContent = keselamatanScore;
-            document.getElementById('chartLingkungan').textContent = lingkunganScore;
-            document.getElementById('chartPeralatan').textContent = peralatanScore;
-            document.getElementById('chartAPD').textContent = apdScore;
-            
-            document.getElementById('progressKeselamatan').style.width = (kesalamatanScore / 5 * 100) + '%';
-            document.getElementById('progressLingkungan').style.width = (lingkunganScore / 4 * 100) + '%';
-            document.getElementById('progressPeralatan').style.width = (peralatanScore / 4 * 100) + '%';
-            document.getElementById('progressAPD').style.width = (apdScore / 3 * 100) + '%';
-            
-            document.getElementById('summarySection').classList.remove('hidden');
-        }
-
-        // Generate HTML report
-        function generateHTMLReport(data) {
-            return `
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laporan Inspeksi K3RS RSUD Talaud</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .header {
-            text-align: center;
-            border-bottom: 3px solid #065f46;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
-        }
-        .header h1 {
-            color: #065f46;
-            margin: 0;
-            font-size: 24px;
-        }
-        .header p {
-            color: #666;
-            margin: 5px 0 0 0;
-            font-size: 14px;
-        }
-        .section {
-            margin-bottom: 25px;
-        }
-        .section-title {
-            background-color: #065f46;
-            color: white;
-            padding: 10px 15px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            border-radius: 5px;
-        }
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        .info-item {
-            padding: 8px 0;
-            border-bottom: 1px solid #eee;
-        }
-        .info-label {
-            font-weight: bold;
-            color: #333;
-            display: inline-block;
-            width: 120px;
-        }
-        .checklist-item {
-            display: flex;
-            align-items: center;
-            padding: 5px 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
-        .checklist-status {
-            width: 20px;
-            height: 20px;
-            margin-right: 10px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 12px;
-        }
-        .status-yes {
-            background-color: #10b981;
-            color: white;
-        }
-        .status-no {
-            background-color: #ef4444;
-            color: white;
-        }
-        .score-section {
-            background-color: #f8fafc;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            margin: 20px 0;
-        }
-        .score {
-            font-size: 36px;
-            font-weight: bold;
-            color: #065f46;
-        }
-        .risk-badge {
-            display: inline-block;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-        .risk-rendah { background-color: #dcfce7; color: #166534; }
-        .risk-sedang { background-color: #fef3c7; color: #92400e; }
-        .risk-tinggi { background-color: #fee2e2; color: #991b1b; }
-        .notes {
-            background-color: #f9fafb;
-            padding: 15px;
-            border-left: 4px solid #065f46;
-            margin: 10px 0;
-        }
-        .footer {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
-            color: #666;
-            font-size: 12px;
-        }
-        @media print {
-            body { background: white; }
-            .container { box-shadow: none; }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>LAPORAN INSPEKSI K3RS</h1>
-            <p>RSUD TALAUD - Formulir Pemeriksaan Keselamatan dan Kesehatan Kerja Rumah Sakit</p>
-        </div>
-
-        <div class="section">
-            <div class="section-title">IDENTITAS PEMERIKSAAN</div>
-            <div class="info-grid">
-                <div class="info-item">
-                    <span class="info-label">Tanggal:</span>
-                    ${data.tanggalInspeksi}
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Lokasi/Unit:</span>
-                    ${data.lokasiUnit}
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Pemeriksa:</span>
-                    ${data.namaPemeriksa}
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Jabatan:</span>
-                    ${data.jabatanPemeriksa}
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">A. KESELAMATAN UMUM</div>
-            <div class="checklist-item">
-                <div class="checklist-status ${data.keselamatanUmum.jalurEvakuasi ? 'status-yes' : 'status-no'}">
-                    ${data.keselamatanUmum.jalurEvakuasi ? '✓' : '✗'}
-                </div>
-                Jalur evakuasi jelas & bebas hambatan
-            </div>
-            <div class="checklist-item">
-                <div class="checklist-status ${data.keselamatanUmum.alatPemadam ? 'status-yes' : 'status-no'}">
-                    ${data.keselamatanUmum.alatPemadam ? '✓' : '✗'}
-                </div>
-                Alat pemadam api tersedia & berfungsi
-            </div>
-            <div class="checklist-item">
-                <div class="checklist-status ${data.keselamatanUmum.penerangan ? 'status-yes' : 'status-no'}">
-                    ${data.keselamatanUmum.penerangan ? '✓' : '✗'}
-                </div>
-                Penerangan memadai
-            </div>
-            <div class="checklist-item">
-                <div class="checklist-status ${data.keselamatanUmum.lantaiTidakLicin ? 'status-yes' : 'status-no'}">
-                    ${data.keselamatanUmum.lantaiTidakLicin ? '✓' : '✗'}
-                </div>
-                Lantai tidak licin
-            </div>
-            <div class="checklist-item">
-                <div class="checklist-status ${data.keselamatanUmum.tandaKeselamatan ? 'status-yes' : 'status-no'}">
-                    ${data.keselamatanUmum.tandaKeselamatan ? '✓' : '✗'}
-                </div>
-                Tanda keselamatan terlihat jelas
-            </div>
-            ${data.keselamatanUmum.catatan ? `
-            <div class="notes">
-                <strong>Catatan/Temuan:</strong><br>
-                ${data.keselamatanUmum.catatan}
-            </div>
-            ` : ''}
-        </div>
-
-        <div class="section">
-            <div class="section-title">B. KESEHATAN LINGKUNGAN</div>
-            <div class="checklist-item">
-                <div class="checklist-status ${data.kesehatanLingkungan.ventilasi ? 'status-yes' : 'status-no'}">
-                    ${data.kesehatanLingkungan.ventilasi ? '✓' : '✗'}
-                </div>
-                Ventilasi baik
-            </div>
-            <div class="checklist-item">
-                <div class="checklist-status ${data.kesehatanLingkungan.suhuKelembapan ? 'status-yes' : 'status-no'}">
-                    ${data.kesehatanLingkungan.suhuKelembapan ? '✓' : '✗'}
-                </div>
-                Suhu dan kelembapan terkontrol
-            </div>
-            <div class="checklist-item">
-                <div class="checklist-status ${data.kesehatanLingkungan.limbahMedis ? 'status-yes' : 'status-no'}">
-                    ${data.kesehatanLingkungan.limbahMedis ? '✓' : '✗'}
-                </div>
-                Limbah medis dikelola sesuai SOP
-            </div>
-            <div class="checklist-item">
-                <div class="checklist-status ${data.kesehatanLingkungan.areaBersih ? 'status-yes' : 'status-no'}">
-                    ${data.kesehatanLingkungan.areaBersih ? '✓' : '✗'}
-                </div>
-                Area bersih dan bebas bau
-            </div>
-            ${data.kesehatanLingkungan.catatan ? `
-            <div class="notes">
-                <strong>Catatan/Temuan:</strong><br>
-                ${data.kesehatanLingkungan.catatan}
-            </div>
-            ` : ''}
-        </div>
-
-        <div class="section">
-            <div class="section-title">C. PERALATAN & LISTRIK</div>
-            <div class="checklist-item">
-                <div class="checklist-status ${data.peralatanListrik.kabelRapi ? 'status-yes' : 'status-no'}">
-                    ${data.peralatanListrik.kabelRapi ? '✓' : '✗'}
-                </div>
-                Kabel rapi dan aman
-            </div>
-            <div class="checklist-item">
-                <div class="checklist-status ${data.peralatanListrik.panelTerkunci ? 'status-yes' : 'status-no'}">
-                    ${data.peralatanListrik.panelTerkunci ? '✓' : '✗'}
-                </div>
-                Panel listrik terkunci
-            </div>
-            <div class="checklist-item">
-                <div class="checklist-status ${data.peralatanListrik.grounding ? 'status-yes' : 'status-no'}">
-                    ${data.peralatanListrik.grounding ? '✓' : '✗'}
-                </div>
-                Grounding peralatan berfungsi
-            </div>
-            <div class="checklist-item">
-                <div class="checklist-status ${data.peralatanListrik.peralatanRutin ? 'status-yes' : 'status-no'}">
-                    ${data.peralatanListrik.peralatanRutin ? '✓' : '✗'}
-                </div>
-                Peralatan medis diperiksa rutin
-            </div>
-            ${data.peralatanListrik.catatan ? `
-            <div class="notes">
-                <strong>Catatan/Temuan:</strong><br>
-                ${data.peralatanListrik.catatan}
-            </div>
-            ` : ''}
-        </div>
-
-        <div class="section">
-            <div class="section-title">D. APD (ALAT PELINDUNG DIRI)</div>
-            <div class="checklist-item">
-                <div class="checklist-status ${data.apd.petugasAPD ? 'status-yes' : 'status-no'}">
-                    ${data.apd.petugasAPD ? '✓' : '✗'}
-                </div>
-                Petugas menggunakan APD sesuai standar
-            </div>
-            <div class="checklist-item">
-                <div class="checklist-status ${data.apd.apdTersedia ? 'status-yes' : 'status-no'}">
-                    ${data.apd.apdTersedia ? '✓' : '✗'}
-                </div>
-                APD tersedia dalam jumlah cukup
-            </div>
-            <div class="checklist-item">
-                <div class="checklist-status ${data.apd.apdKondisiBaik ? 'status-yes' : 'status-no'}">
-                    ${data.apd.apdKondisiBaik ? '✓' : '✗'}
-                </div>
-                APD dalam kondisi baik
-            </div>
-            ${data.apd.catatan ? `
-            <div class="notes">
-                <strong>Catatan/Temuan:</strong><br>
-                ${data.apd.catatan}
-            </div>
-            ` : ''}
-        </div>
-
-        <div class="score-section">
-            <div class="score">${data.skorKepatuhan}%</div>
-            <div>SKOR KEPATUHAN</div>
-            <div class="risk-badge risk-${data.tingkatRisiko}">
-                TINGKAT RISIKO: ${data.tingkatRisiko.toUpperCase()}
-            </div>
-        </div>
-
-        ${data.rekomendasi ? `
-        <div class="section">
-            <div class="section-title">REKOMENDASI PERBAIKAN</div>
-            <div class="notes">
-                ${data.rekomendasi}
-            </div>
-        </div>
-        ` : ''}
-
-        <div class="footer">
-            <p>© 2025 RSUD Talaud — Tim K3RS</p>
-            <p>Laporan ini dibuat pada: ${new Date().toLocaleString('id-ID')}</p>
-        </div>
-    </div>
-</body>
-</html>
-            `;
-        }
-
-        // Event listeners
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add event listeners to all checkboxes for score calculation
-            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-                checkbox.addEventListener('change', updateScore);
+                `;
+                dataContainer.appendChild(dataCard);
             });
-            
-            // Add event listener to risk radio buttons
-            document.querySelectorAll('input[name="tingkatRisiko"]').forEach(radio => {
-                radio.addEventListener('change', updateRiskBadge);
-            });
-            
-            // Initialize displays
-            updateScore();
-            updateRiskBadge();
+        };
+
+        // Event listener untuk submit form
+        form.addEventListener('submit', (event) => {
+            event.preventDefault(); // Mencegah halaman reload
+
+            // 1. Ambil semua data dari form
+            const formData = new FormData(form);
+            const newData = {
+                nama: formData.get('nama'),
+                umur: formData.get('umur'),
+                jenisKelamin: formData.get('jenisKelamin'),
+                pekerjaan: formData.get('pekerjaan'),
+                alamat: formData.get('alamat'),
+                tinggiBadan: formData.get('tinggiBadan'),
+                beratBadan: formData.get('beratBadan'),
+                tekananDarah: formData.get('tekananDarah'),
+            };
+
+            // 2. Muat data yang sudah ada, tambahkan data baru
+            const allData = loadData();
+            allData.push(newData);
+
+            // 3. Simpan kembali ke Local Storage
+            saveData(allData);
+
+            // 4. Tampilkan kembali data yang sudah diperbarui
+            renderData();
+
+            // 5. Kosongkan form
+            form.reset();
+
+            // 6. Tampilkan notifikasi sukses
+            alert('Pendaftaran berhasil! Data telah disimpan di browser ini.');
         });
+
+        // Tampilkan data yang ada saat halaman pertama kali dimuat
+        document.addEventListener('DOMContentLoaded', renderData);
     </script>
 </body>
 </html>
