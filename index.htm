@@ -3,1071 +3,1113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>K3RS RSUD Talaud - Sistem Pelaporan Keselamatan dan Kesehatan Kerja</title>
-    <meta name="description" content="Sistem pelaporan insiden K3RS RSUD Talaud untuk meningkatkan keselamatan dan kesehatan kerja di rumah sakit">
-    <meta name="keywords" content="K3RS, RSUD Talaud, pelaporan insiden, keselamatan kerja, kesehatan kerja, rumah sakit">
-    <meta name="author" content="Tim K3RS RSUD Talaud">
-    <meta name="robots" content="index, follow">
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="K3RS RSUD Talaud - Sistem Pelaporan Insiden">
-    <meta property="og:description" content="Laporkan insiden keselamatan dan kesehatan kerja dengan cepat dan akurat">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://rsud-talaud.go.id/k3rs">
-    <meta property="og:image" content="https://rsud-talaud.go.id/k3rs/og-image.jpg">
-    <meta property="og:site_name" content="K3RS RSUD Talaud">
-    
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="K3RS RSUD Talaud">
-    <meta name="twitter:description" content="Sistem pelaporan insiden K3RS RSUD Talaud">
-    <meta name="twitter:image" content="https://rsud-talaud.go.id/k3rs/twitter-image.jpg">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
+    <title>Laporan Inspeksi K3RS RSUD Talaud</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        :root {
-            --primary: 59, 130, 246;
-            --primary-foreground: 248, 250, 252;
-            --secondary: 229, 231, 235;
-            --secondary-foreground: 55, 65, 81;
-            --muted: 214, 216, 220;
-            --muted-foreground: 148, 163, 184;
-            --accent: 216, 180, 254;
-            --accent-foreground: 24, 24, 27;
-            --destructive: 239, 68, 68;
-            --destructive-foreground: 248, 250, 252;
-            --border: 214, 216, 220;
-            --input: 255, 255, 255;
-            --ring: 59, 130, 246;
-            --radius: 0.5rem;
-            --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        /* Custom scrollbar styling */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 3px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-green-50 to-gray-50">
+    <!-- Header -->
+    <header class="bg-green-800 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <div>
+                        <h1 class="text-2xl md:text-3xl font-bold">Laporan Inspeksi K3RS RSUD Talaud</h1>
+                        <p class="text-green-100 text-sm md:text-base">Formulir Pemeriksaan Keselamatan dan Kesehatan Kerja Rumah Sakit</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid gap-6">
+            
+            <!-- Identitas Pemeriksaan -->
+            <div class="bg-white rounded-lg shadow-md">
+                <div class="p-6 border-b border-gray-200">
+                    <h2 class="text-lg font-semibold flex items-center gap-2">
+                        <i data-lucide="user" class="w-5 h-5"></i>
+                        Identitas Pemeriksaan
+                    </h2>
+                </div>
+                <div class="p-6 grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="tanggal" class="block text-sm font-medium text-gray-700 mb-1">Tanggal Inspeksi</label>
+                        <input
+                            type="date"
+                            id="tanggal"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                        />
+                    </div>
+                    <div>
+                        <label for="lokasi" class="block text-sm font-medium text-gray-700 mb-1">Lokasi / Unit yang Diperiksa</label>
+                        <input
+                            type="text"
+                            id="lokasi"
+                            placeholder="Contoh: IGD, Ruang Operasi, Lab"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                        />
+                    </div>
+                    <div>
+                        <label for="namaPemeriksa" class="block text-sm font-medium text-gray-700 mb-1">Nama Pemeriksa</label>
+                        <input
+                            type="text"
+                            id="namaPemeriksa"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                        />
+                    </div>
+                    <div>
+                        <label for="jabatan" class="block text-sm font-medium text-gray-700 mb-1">Jabatan Pemeriksa</label>
+                        <input
+                            type="text"
+                            id="jabatan"
+                            placeholder="Contoh: Ketua K3RS, Safety Officer"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aspek Pemeriksaan K3RS -->
+            <div class="bg-white rounded-lg shadow-md">
+                <div class="border-b border-gray-200">
+                    <nav class="flex space-x-8 px-6" aria-label="Tabs">
+                        <button onclick="switchTab('keselamatan')" class="tab-btn py-4 px-1 border-b-2 font-medium text-sm border-green-500 text-green-600" data-tab="keselamatan">
+                            Keselamatan Umum
+                        </button>
+                        <button onclick="switchTab('lingkungan')" class="tab-btn py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="lingkungan">
+                            Kesehatan Lingkungan
+                        </button>
+                        <button onclick="switchTab('peralatan')" class="tab-btn py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="peralatan">
+                            Peralatan & Listrik
+                        </button>
+                        <button onclick="switchTab('apd')" class="tab-btn py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="apd">
+                            APD
+                        </button>
+                    </nav>
+                </div>
+
+                <!-- Tab Content -->
+                <div class="p-6">
+                    <!-- Keselamatan Umum -->
+                    <div id="keselamatan" class="tab-content space-y-4">
+                        <h3 class="text-lg font-semibold flex items-center gap-2">
+                            <i data-lucide="shield" class="w-5 h-5"></i>
+                            A. Keselamatan Umum
+                        </h3>
+                        <div class="space-y-3">
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" class="keselamatan-checkbox rounded text-green-600 focus:ring-green-500" data-item="jalurEvakuasi">
+                                <span class="text-sm">Jalur evakuasi jelas & bebas hambatan</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" class="keselamatan-checkbox rounded text-green-600 focus:ring-green-500" data-item="alatPemadam">
+                                <span class="text-sm">Alat pemadam api tersedia & berfungsi</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" class="keselamatan-checkbox rounded text-green-600 focus:ring-green-500" data-item="penerangan">
+                                <span class="text-sm">Penerangan memadai</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" class="keselamatan-checkbox rounded text-green-600 focus:ring-green-500" data-item="lantaiTidakLicin">
+                                <span class="text-sm">Lantai tidak licin</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" class="keselamatan-checkbox rounded text-green-600 focus:ring-green-500" data-item="tandaKeselamatan">
+                                <span class="text-sm">Tanda keselamatan terlihat jelas</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label for="catatanKeselamatan" class="block text-sm font-medium text-gray-700 mb-1">Catatan / Temuan:</label>
+                            <textarea
+                                id="catatanKeselamatan"
+                                rows="3"
+                                placeholder="Catat temuan atau rekomendasi..."
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                            ></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Kesehatan Lingkungan -->
+                    <div id="lingkungan" class="tab-content space-y-4 hidden">
+                        <h3 class="text-lg font-semibold flex items-center gap-2">
+                            <i data-lucide="shield" class="w-5 h-5"></i>
+                            B. Kesehatan Lingkungan
+                        </h3>
+                        <div class="space-y-3">
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" class="lingkungan-checkbox rounded text-green-600 focus:ring-green-500" data-item="ventilasi">
+                                <span class="text-sm">Ventilasi baik</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" class="lingkungan-checkbox rounded text-green-600 focus:ring-green-500" data-item="suhuKelembapan">
+                                <span class="text-sm">Suhu dan kelembapan terkontrol</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" class="lingkungan-checkbox rounded text-green-600 focus:ring-green-500" data-item="limbahMedis">
+                                <span class="text-sm">Limbah medis dikelola sesuai SOP</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" class="lingkungan-checkbox rounded text-green-600 focus:ring-green-500" data-item="areaBersih">
+                                <span class="text-sm">Area bersih dan bebas bau</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label for="catatanLingkungan" class="block text-sm font-medium text-gray-700 mb-1">Catatan / Temuan:</label>
+                            <textarea
+                                id="catatanLingkungan"
+                                rows="3"
+                                placeholder="Catat temuan atau rekomendasi..."
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                            ></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Peralatan & Listrik -->
+                    <div id="peralatan" class="tab-content space-y-4 hidden">
+                        <h3 class="text-lg font-semibold flex items-center gap-2">
+                            <i data-lucide="shield" class="w-5 h-5"></i>
+                            C. Peralatan & Listrik
+                        </h3>
+                        <div class="space-y-3">
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" class="peralatan-checkbox rounded text-green-600 focus:ring-green-500" data-item="kabelRapi">
+                                <span class="text-sm">Kabel rapi dan aman</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" class="peralatan-checkbox rounded text-green-600 focus:ring-green-500" data-item="panelTerkunci">
+                                <span class="text-sm">Panel listrik terkunci</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" class="peralatan-checkbox rounded text-green-600 focus:ring-green-500" data-item="grounding">
+                                <span class="text-sm">Grounding peralatan berfungsi</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" class="peralatan-checkbox rounded text-green-600 focus:ring-green-500" data-item="peralatanRutin">
+                                <span class="text-sm">Peralatan medis diperiksa rutin</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label for="catatanPeralatan" class="block text-sm font-medium text-gray-700 mb-1">Catatan / Temuan:</label>
+                            <textarea
+                                id="catatanPeralatan"
+                                rows="3"
+                                placeholder="Catat temuan atau rekomendasi..."
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                            ></textarea>
+                        </div>
+                    </div>
+
+                    <!-- APD -->
+                    <div id="apd" class="tab-content space-y-4 hidden">
+                        <h3 class="text-lg font-semibold flex items-center gap-2">
+                            <i data-lucide="shield" class="w-5 h-5"></i>
+                            D. APD (Alat Pelindung Diri)
+                        </h3>
+                        <div class="space-y-3">
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" class="apd-checkbox rounded text-green-600 focus:ring-green-500" data-item="petugasAPD">
+                                <span class="text-sm">Petugas menggunakan APD sesuai standar</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" class="apd-checkbox rounded text-green-600 focus:ring-green-500" data-item="apdTersedia">
+                                <span class="text-sm">APD tersedia dalam jumlah cukup</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" class="apd-checkbox rounded text-green-600 focus:ring-green-500" data-item="apdKondisiBaik">
+                                <span class="text-sm">APD dalam kondisi baik</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label for="catatanAPD" class="block text-sm font-medium text-gray-700 mb-1">Catatan / Temuan:</label>
+                            <textarea
+                                id="catatanAPD"
+                                rows="3"
+                                placeholder="Catat temuan atau rekomendasi..."
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                            ></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Penilaian Umum -->
+            <div class="bg-white rounded-lg shadow-md">
+                <div class="p-6 border-b border-gray-200">
+                    <h2 class="text-lg font-semibold flex items-center gap-2">
+                        <i data-lucide="file-text" class="w-5 h-5"></i>
+                        Penilaian Umum
+                    </h2>
+                </div>
+                <div class="p-6 space-y-4">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Skor Kepatuhan (0–100)</label>
+                            <div class="mt-2">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span id="scoreDisplay" class="text-2xl font-bold text-green-600">0%</span>
+                                    <span id="riskBadge" class="px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800">
+                                        RENDAH
+                                    </span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div id="scoreProgress" class="bg-green-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Tingkat Risiko</label>
+                            <div class="space-y-2">
+                                <label class="flex items-center space-x-2">
+                                    <input type="radio" name="tingkatRisiko" value="rendah" checked class="text-green-600 focus:ring-green-500">
+                                    <span class="text-sm">Rendah</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="radio" name="tingkatRisiko" value="sedang" class="text-green-600 focus:ring-green-500">
+                                    <span class="text-sm">Sedang</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="radio" name="tingkatRisiko" value="tinggi" class="text-green-600 focus:ring-green-500">
+                                    <span class="text-sm">Tinggi</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="rekomendasi" class="block text-sm font-medium text-gray-700 mb-1">Rekomendasi Perbaikan:</label>
+                        <textarea
+                            id="rekomendasi"
+                            rows="3"
+                            placeholder="Tuliskan rekomendasi perbaikan yang diperlukan..."
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                        ></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aksi Buttons -->
+            <div class="bg-white rounded-lg shadow-md">
+                <div class="p-6">
+                    <div class="flex flex-wrap gap-3 justify-center">
+                        <button
+                            onclick="saveReport()"
+                            class="bg-green-700 hover:bg-green-800 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200 flex items-center gap-2"
+                        >
+                            <i data-lucide="download" class="w-4 h-4"></i>
+                            <span id="saveButtonText">💾 Simpan Laporan</span>
+                        </button>
+                        <button
+                            onclick="resetForm()"
+                            class="border border-gray-400 text-gray-600 hover:bg-gray-50 font-medium py-2 px-4 rounded-md transition-colors duration-200 flex items-center gap-2"
+                        >
+                            <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                            Reset Formulir
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Daftar Laporan Tersimpan -->
+            <div id="savedReportsSection" class="bg-white rounded-lg shadow-md hidden">
+                <div class="p-6 border-b border-gray-200">
+                    <h2 class="text-lg font-semibold flex items-center gap-2">
+                        <i data-lucide="file-text" class="w-5 h-5"></i>
+                        📋 Daftar Laporan Tersimpan (<span id="reportCount">0</span>)
+                    </h2>
+                </div>
+                <div class="p-6">
+                    <div id="reportsList" class="space-y-3 max-h-96 overflow-y-auto custom-scrollbar">
+                        <!-- Reports will be inserted here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ringkasan (muncul setelah submit) -->
+            <div id="summarySection" class="bg-white rounded-lg shadow-md hidden">
+                <div class="p-6 border-b border-gray-200">
+                    <h2 class="text-lg font-semibold flex items-center gap-2">
+                        <i data-lucide="file-text" class="w-5 h-5"></i>
+                        Ringkasan Laporan Inspeksi
+                    </h2>
+                </div>
+                <div class="p-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-3">
+                            <div>
+                                <span class="font-semibold">Tanggal:</span> <span id="summaryTanggal">-</span>
+                            </div>
+                            <div>
+                                <span class="font-semibold">Lokasi:</span> <span id="summaryLokasi">-</span>
+                            </div>
+                            <div>
+                                <span class="font-semibold">Pemeriksa:</span> <span id="summaryPemeriksa">-</span>
+                            </div>
+                            <div>
+                                <span class="font-semibold">Skor Kepatuhan:</span> 
+                                <span id="summarySkor" class="ml-2 font-bold text-green-600">0%</span>
+                            </div>
+                            <div>
+                                <span class="font-semibold">Tingkat Risiko:</span>
+                                <span id="summaryRisiko" class="ml-2 px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800">
+                                    RENDAH
+                                </span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="font-semibold mb-2">Rekomendasi:</div>
+                            <p id="summaryRekomendasi" class="text-sm text-gray-600">Tidak ada rekomendasi</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Mini Chart -->
+                    <div class="mt-6 pt-6 border-t">
+                        <h4 class="font-semibold mb-4">Grafik Kepatuhan per Kategori</h4>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div class="text-center">
+                                <div class="text-sm font-medium">Keselamatan</div>
+                                <div class="text-2xl font-bold text-green-600">
+                                    <span id="chartKeselamatan">0</span>/5
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2 mt-1">
+                                    <div id="progressKeselamatan" class="bg-green-600 h-2 rounded-full" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-sm font-medium">Lingkungan</div>
+                                <div class="text-2xl font-bold text-green-600">
+                                    <span id="chartLingkungan">0</span>/4
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2 mt-1">
+                                    <div id="progressLingkungan" class="bg-green-600 h-2 rounded-full" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-sm font-medium">Peralatan</div>
+                                <div class="text-2xl font-bold text-green-600">
+                                    <span id="chartPeralatan">0</span>/4
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2 mt-1">
+                                    <div id="progressPeralatan" class="bg-green-600 h-2 rounded-full" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-sm font-medium">APD</div>
+                                <div class="text-2xl font-bold text-green-600">
+                                    <span id="chartAPD">0</span>/3
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2 mt-1">
+                                    <div id="progressAPD" class="bg-green-600 h-2 rounded-full" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-green-800 text-white py-6 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">© 2025 RSUD Talaud — Tim K3RS</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Global state
+        let savedReports = JSON.parse(localStorage.getItem('k3rsReports') || '[]');
+        let currentReport = {};
+
+        // Initialize date field with today's date
+        document.getElementById('tanggal').value = new Date().toISOString().split('T')[0];
+
+        // Load saved reports on page load
+        loadSavedReports();
+
+        // Tab switching
+        function switchTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            
+            // Remove active state from all tabs
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('border-green-500', 'text-green-600');
+                btn.classList.add('border-transparent', 'text-gray-500');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.remove('hidden');
+            
+            // Add active state to selected tab
+            const activeBtn = document.querySelector(`[data-tab="${tabName}"]`);
+            activeBtn.classList.remove('border-transparent', 'text-gray-500');
+            activeBtn.classList.add('border-green-500', 'text-green-600');
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        // Calculate compliance score
+        function calculateComplianceScore() {
+            const keselamatanChecks = document.querySelectorAll('.keselamatan-checkbox:checked').length;
+            const lingkunganChecks = document.querySelectorAll('.lingkungan-checkbox:checked').length;
+            const peralatanChecks = document.querySelectorAll('.peralatan-checkbox:checked').length;
+            const apdChecks = document.querySelectorAll('.apd-checkbox:checked').length;
+            
+            const totalChecks = 16; // 5 + 4 + 4 + 3
+            const totalPassed = keselamatanChecks + lingkunganChecks + peralatanChecks + apdChecks;
+            
+            return Math.round((totalPassed / totalChecks) * 100);
         }
 
+        // Update score display
+        function updateScore() {
+            const score = calculateComplianceScore();
+            document.getElementById('scoreDisplay').textContent = score + '%';
+            document.getElementById('scoreProgress').style.width = score + '%';
+            
+            // Update score color
+            const scoreElement = document.getElementById('scoreDisplay');
+            scoreElement.classList.remove('text-green-600', 'text-yellow-600', 'text-red-600');
+            if (score >= 80) {
+                scoreElement.classList.add('text-green-600');
+            } else if (score >= 60) {
+                scoreElement.classList.add('text-yellow-600');
+            } else {
+                scoreElement.classList.add('text-red-600');
+            }
+        }
+
+        // Update risk badge
+        function updateRiskBadge() {
+            const selectedRisk = document.querySelector('input[name="tingkatRisiko"]:checked').value;
+            const badge = document.getElementById('riskBadge');
+            
+            badge.classList.remove('bg-green-100', 'text-green-800', 'bg-yellow-100', 'text-yellow-800', 'bg-red-100', 'text-red-800');
+            
+            switch(selectedRisk) {
+                case 'rendah':
+                    badge.classList.add('bg-green-100', 'text-green-800');
+                    badge.textContent = 'RENDAH';
+                    break;
+                case 'sedang':
+                    badge.classList.add('bg-yellow-100', 'text-yellow-800');
+                    badge.textContent = 'SEDANG';
+                    break;
+                case 'tinggi':
+                    badge.classList.add('bg-red-100', 'text-red-800');
+                    badge.textContent = 'TINGGI';
+                    break;
+            }
+        }
+
+        // Get form data
+        function getFormData() {
+            const keselamatanData = {};
+            document.querySelectorAll('.kesalaman-checkbox').forEach(checkbox => {
+                keselamatanData[checkbox.dataset.item] = checkbox.checked;
+            });
+            kesalamatanData.catatan = document.getElementById('catatanKeselamatan').value;
+
+            const lingkunganData = {};
+            document.querySelectorAll('.lingkungan-checkbox').forEach(checkbox => {
+                lingkunganData[checkbox.dataset.item] = checkbox.checked;
+            });
+            lingkunganData.catatan = document.getElementById('catatanLingkungan').value;
+
+            const peralatanData = {};
+            document.querySelectorAll('.peralatan-checkbox').forEach(checkbox => {
+                peralatanData[checkbox.dataset.item] = checkbox.checked;
+            });
+            peralatanData.catatan = document.getElementById('catatanPeralatan').value;
+
+            const apdData = {};
+            document.querySelectorAll('.apd-checkbox').forEach(checkbox => {
+                apdData[checkbox.dataset.item] = checkbox.checked;
+            });
+            apdData.catatan = document.getElementById('catatanAPD').value;
+
+            return {
+                tanggalInspeksi: document.getElementById('tanggal').value,
+                lokasiUnit: document.getElementById('lokasi').value,
+                namaPemeriksa: document.getElementById('namaPemeriksa').value,
+                jabatanPemeriksa: document.getElementById('jabatan').value,
+                keselamatanUmum: keselamatanData,
+                kesehatanLingkungan: lingkunganData,
+                peralatanListrik: peralatanData,
+                apd: apdData,
+                skorKepatuhan: calculateComplianceScore(),
+                tingkatRisiko: document.querySelector('input[name="tingkatRisiko"]:checked').value,
+                rekomendasi: document.getElementById('rekomendasi').value
+            };
+        }
+
+        // Save report
+        async function saveReport() {
+            const saveButton = document.getElementById('saveButtonText');
+            saveButton.textContent = 'Menyimpan...';
+            
+            try {
+                const formData = getFormData();
+                const newReport = {
+                    id: Date.now().toString(),
+                    ...formData,
+                    createdAt: new Date().toISOString()
+                };
+                
+                // Save to localStorage
+                savedReports.unshift(newReport);
+                localStorage.setItem('k3rsReports', JSON.stringify(savedReports));
+                
+                // Update UI
+                loadSavedReports();
+                showSummary(newReport);
+                
+                alert('Laporan berhasil disimpan secara permanen!');
+                resetForm();
+                
+            } catch (error) {
+                console.error('Error saving report:', error);
+                alert('Terjadi kesalahan. Silakan coba lagi.');
+            } finally {
+                saveButton.textContent = '💾 Simpan Laporan';
+            }
+        }
+
+        // Reset form
+        function resetForm() {
+            document.getElementById('tanggal').value = new Date().toISOString().split('T')[0];
+            document.getElementById('lokasi').value = '';
+            document.getElementById('namaPemeriksa').value = '';
+            document.getElementById('jabatan').value = '';
+            
+            // Reset all checkboxes
+            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            
+            // Reset all textareas
+            document.querySelectorAll('textarea').forEach(textarea => {
+                textarea.value = '';
+            });
+            
+            // Reset risk radio
+            document.querySelector('input[name="tingkatRisiko"][value="rendah"]').checked = true;
+            
+            // Update displays
+            updateScore();
+            updateRiskBadge();
+            
+            // Hide summary
+            document.getElementById('summarySection').classList.add('hidden');
+        }
+
+        // Load saved reports
+        function loadSavedReports() {
+            const reportsSection = document.getElementById('savedReportsSection');
+            const reportsList = document.getElementById('reportsList');
+            const reportCount = document.getElementById('reportCount');
+            
+            if (savedReports.length === 0) {
+                reportsSection.classList.add('hidden');
+                return;
+            }
+            
+            reportsSection.classList.remove('hidden');
+            reportCount.textContent = savedReports.length;
+            
+            reportsList.innerHTML = savedReports.map(report => `
+                <div class="border rounded-lg p-4 hover:bg-gray-50 transition-colors">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="font-semibold">${report.lokasiUnit}</span>
+                                <span class="px-2 py-1 rounded-full text-xs font-semibold ${getRiskBadgeClass(report.tingkatRisiko)}">
+                                    ${report.tingkatRisiko.toUpperCase()}
+                                </span>
+                                <span class="text-sm font-bold ${getScoreColorClass(report.skorKepatuhan)}">
+                                    ${report.skorKepatuhan}%
+                                </span>
+                            </div>
+                            <div class="text-sm text-gray-600 grid grid-cols-2 md:grid-cols-4 gap-2">
+                                <div>📅 ${report.tanggalInspeksi}</div>
+                                <div>👤 ${report.namaPemeriksa}</div>
+                                <div>📝 ${report.jabatanPemeriksa}</div>
+                                <div>🕐 ${new Date(report.createdAt).toLocaleString('id-ID', { 
+                                    dateStyle: 'short', 
+                                    timeStyle: 'short' 
+                                })}</div>
+                            </div>
+                            ${report.rekomendasi ? `
+                                <div class="mt-2 text-sm">
+                                    <span class="font-medium">Rekomendasi:</span> 
+                                    <span class="text-gray-600 ml-1">${report.rekomendasi.substring(0, 100)}${report.rekomendasi.length > 100 ? '...' : ''}</span>
+                                </div>
+                            ` : ''}
+                        </div>
+                        <div class="flex gap-2 ml-4">
+                            <button
+                                onclick="downloadReport('${report.id}')"
+                                class="p-2 text-blue-600 border border-blue-600 rounded hover:bg-blue-50 transition-colors"
+                            >
+                                <i data-lucide="download" class="w-4 h-4"></i>
+                            </button>
+                            <button
+                                onclick="deleteReport('${report.id}')"
+                                class="p-2 text-red-600 border border-red-600 rounded hover:bg-red-50 transition-colors"
+                            >
+                                <i data-lucide="x-circle" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Re-initialize Lucide icons for new content
+            lucide.createIcons();
+        }
+
+        // Get risk badge class
+        function getRiskBadgeClass(risk) {
+            switch(risk) {
+                case 'rendah': return 'bg-green-100 text-green-800';
+                case 'sedang': return 'bg-yellow-100 text-yellow-800';
+                case 'tinggi': return 'bg-red-100 text-red-800';
+                default: return 'bg-gray-100 text-gray-800';
+            }
+        }
+
+        // Get score color class
+        function getScoreColorClass(score) {
+            if (score >= 80) return 'text-green-600';
+            if (score >= 60) return 'text-yellow-600';
+            return 'text-red-600';
+        }
+
+        // Delete report
+        function deleteReport(reportId) {
+            if (confirm('Apakah Anda yakin ingin menghapus laporan ini?')) {
+                savedReports = savedReports.filter(report => report.id !== reportId);
+                localStorage.setItem('k3rsReports', JSON.stringify(savedReports));
+                loadSavedReports();
+                alert('Laporan berhasil dihapus');
+            }
+        }
+
+        // Download report
+        function downloadReport(reportId) {
+            const report = savedReports.find(r => r.id === reportId);
+            if (!report) return;
+            
+            const htmlContent = generateHTMLReport(report);
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Laporan-Inspeksi-K3RS-${report.tanggalInspeksi}.html`;
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+
+        // Show summary
+        function showSummary(report) {
+            document.getElementById('summaryTanggal').textContent = report.tanggalInspeksi;
+            document.getElementById('summaryLokasi').textContent = report.lokasiUnit;
+            document.getElementById('summaryPemeriksa').textContent = report.namaPemeriksa;
+            document.getElementById('summarySkor').textContent = report.skorKepatuhan + '%';
+            document.getElementById('summaryRekomendasi').textContent = report.rekomendasi || 'Tidak ada rekomendasi';
+            
+            // Update risk badge
+            const riskBadge = document.getElementById('summaryRisiko');
+            riskBadge.className = `ml-2 px-3 py-1 rounded-full text-xs font-semibold ${getRiskBadgeClass(report.tingkatRisiko)}`;
+            riskBadge.textContent = report.tingkatRisiko.toUpperCase();
+            
+            // Update score color
+            const scoreElement = document.getElementById('summarySkor');
+            scoreElement.className = `ml-2 font-bold ${getScoreColorClass(report.skorKepatuhan)}`;
+            
+            // Update charts
+            const keselamatanScore = Object.values(report.keselamatanUmum).filter(v => typeof v === 'boolean' && v).length;
+            const lingkunganScore = Object.values(report.kesehatanLingkungan).filter(v => typeof v === 'boolean' && v).length;
+            const peralatanScore = Object.values(report.peralatanListrik).filter(v => typeof v === 'boolean' && v).length;
+            const apdScore = Object.values(report.apd).filter(v => typeof v === 'boolean' && v).length;
+            
+            document.getElementById('chartKeselamatan').textContent = keselamatanScore;
+            document.getElementById('chartLingkungan').textContent = lingkunganScore;
+            document.getElementById('chartPeralatan').textContent = peralatanScore;
+            document.getElementById('chartAPD').textContent = apdScore;
+            
+            document.getElementById('progressKeselamatan').style.width = (kesalamatanScore / 5 * 100) + '%';
+            document.getElementById('progressLingkungan').style.width = (lingkunganScore / 4 * 100) + '%';
+            document.getElementById('progressPeralatan').style.width = (peralatanScore / 4 * 100) + '%';
+            document.getElementById('progressAPD').style.width = (apdScore / 3 * 100) + '%';
+            
+            document.getElementById('summarySection').classList.remove('hidden');
+        }
+
+        // Generate HTML report
+        function generateHTMLReport(data) {
+            return `
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Inspeksi K3RS RSUD Talaud</title>
+    <style>
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            min-height: 100vh;
-            color: #1f2937;
-            line-height: 1.6;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
         }
-
         .container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 0 20px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #065f46;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
         }
-
-        .glass-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.15);
+        .header h1 {
+            color: #065f46;
+            margin: 0;
+            font-size: 24px;
         }
-
-        .btn {
-            @apply px-6 py-3 rounded-lg font-medium transition-all duration-200;
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+        .header p {
+            color: #666;
+            margin: 5px 0 0 0;
+            font-size: 14px;
+        }
+        .section {
+            margin-bottom: 25px;
+        }
+        .section-title {
+            background-color: #065f46;
             color: white;
-            border: none;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            font-weight: 500;
-            position: relative;
-            overflow: hidden;
+            padding: 10px 15px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-radius: 5px;
         }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
         }
-
-        .btn:hover::before {
-            left: 100%;
+        .info-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
         }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.3);
-        }
-
-        .btn:active {
-            transform: translateY(0);
-        }
-
-        .btn-secondary {
-            background: linear-gradient(135deg, #64748b 0%, #475569 100%);
-        }
-
-        .btn-success {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-        }
-
-        .input {
-            @apply w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(5px);
-            font-size: 16px;
-        }
-
-        .input:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-
-        .select {
-            @apply w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(5px);
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .select:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-
-        .textarea {
-            @apply w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200 resize-none;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(5px);
-            font-size: 16px;
-            line-height: 1.5;
-        }
-
-        .textarea:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-
-        .badge {
-            @apply px-3 py-1 rounded-full text-sm font-medium;
-            font-weight: 500;
-        }
-
-        .badge-high {
-            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-            color: white;
-            box-shadow: 0 4px 6px rgba(239, 68, 68, 0.3);
-        }
-
-        .badge-medium {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-            color: white;
-            box-shadow: 0 4px 6px rgba(245, 158, 11, 0.3);
-        }
-
-        .badge-low {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
-            box-shadow: 0 4px 6px rgba(16, 185, 129, 0.3);
-        }
-
-        .priority-indicator {
-            @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg border;
-            background: rgba(248, 250, 252, 0.9);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-        }
-
-        .pin-input {
-            @apply text-center text-2xl tracking-widest font-mono;
-            letter-spacing: 0.3em;
-            font-weight: 600;
-        }
-
-        .stats-card {
-            @apply p-6 rounded-xl border transition-all duration-300;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(59, 130, 246, 0.1);
-        }
-
-        .stats-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.15);
-            border-color: rgba(59, 130, 246, 0.3);
-        }
-
-        .form-overlay {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 16px;
-        }
-
-        .lock-overlay {
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-        }
-
-        .animate-float {
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .animate-pulse-slow {
-            animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-
-        .animate-slide-up {
-            animation: slideUp 0.5s ease-out;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 16px;
-            }
-            
-            .btn {
-                @apply px-4 py-2 text-sm;
-            }
-            
-            .input, .select, .textarea {
-                @apply px-3 py-2 text-sm;
-            }
-            
-            .stats-card {
-                @apply p-4;
-            }
-        }
-
-        /* Loading Animation */
-        .loading {
+        .info-label {
+            font-weight: bold;
+            color: #333;
             display: inline-block;
+            width: 120px;
+        }
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            padding: 5px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .checklist-status {
             width: 20px;
             height: 20px;
-            border: 3px solid #f3f4f6;
+            margin-right: 10px;
             border-radius: 50%;
-            border-top-color: #3b82f6;
-            animation: spin 1s linear infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 12px;
         }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+        .status-yes {
+            background-color: #10b981;
+            color: white;
         }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
+        .status-no {
+            background-color: #ef4444;
+            color: white;
         }
-
-        ::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
+        .score-section {
+            background-color: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 20px 0;
         }
-
-        ::-webkit-scrollbar-thumb {
-            background: rgba(59, 130, 246, 0.5);
-            border-radius: 4px;
+        .score {
+            font-size: 36px;
+            font-weight: bold;
+            color: #065f46;
         }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(59, 130, 246, 0.7);
+        .risk-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-top: 10px;
         }
-
-        /* Table Styles */
-        .table-container {
-            @apply overflow-x-auto rounded-lg border border-gray-200;
+        .risk-rendah { background-color: #dcfce7; color: #166534; }
+        .risk-sedang { background-color: #fef3c7; color: #92400e; }
+        .risk-tinggi { background-color: #fee2e2; color: #991b1b; }
+        .notes {
+            background-color: #f9fafb;
+            padding: 15px;
+            border-left: 4px solid #065f46;
+            margin: 10px 0;
         }
-
-        .table {
-            @apply w-full min-w-full;
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #666;
+            font-size: 12px;
         }
-
-        .table th {
-            @apply px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider bg-gray-50;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-        }
-
-        .table td {
-            @apply px-6 py-4 whitespace-nowrap text-sm;
-            border-top: 1px solid rgba(229, 231, 235, 0.5);
-        }
-
-        .table tr:hover {
-            background-color: rgba(59, 130, 246, 0.05);
-        }
-
-        /* Success/Error Messages */
-        .toast {
-            @apply fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            animation: slideUp 0.3s ease-out;
-        }
-
-        .toast-success {
-            border-left: 4px solid #10b981;
-        }
-
-        .toast-error {
-            border-left: 4px solid #ef4444;
-        }
-
-        /* Priority Dot Animation */
-        .priority-dot {
-            @apply w-3 h-3 rounded-full transition-all duration-300;
-            animation: pulse 2s infinite;
+        @media print {
+            body { background: white; }
+            .container { box-shadow: none; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
-        <header class="glass-card sticky top-0 z-50 mb-8 py-4 px-6">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center shadow-lg">
-                        <i data-lucide="shield" class="w-5 h-5 text-white"></i>
-                    </div>
-                    <div>
-                        <h1 class="text-xl font-bold text-gray-900">K3RS RSUD Talaud</h1>
-                        <p class="text-sm text-gray-600">Sistem Pelaporan Keselamatan & Kesehatan Kerja</p>
-                    </div>
+        <div class="header">
+            <h1>LAPORAN INSPEKSI K3RS</h1>
+            <p>RSUD TALAUD - Formulir Pemeriksaan Keselamatan dan Kesehatan Kerja Rumah Sakit</p>
+        </div>
+
+        <div class="section">
+            <div class="section-title">IDENTITAS PEMERIKSAAN</div>
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="info-label">Tanggal:</span>
+                    ${data.tanggalInspeksi}
                 </div>
-                <div class="flex items-center space-x-2 text-sm text-gray-600">
-                    <i data-lucide="calendar" class="w-4 h-4"></i>
-                    <span id="current-date"></span>
+                <div class="info-item">
+                    <span class="info-label">Lokasi/Unit:</span>
+                    ${data.lokasiUnit}
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Pemeriksa:</span>
+                    ${data.namaPemeriksa}
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Jabatan:</span>
+                    ${data.jabatanPemeriksa}
                 </div>
             </div>
-        </header>
+        </div>
 
-        <!-- Hero Section -->
-        <section class="text-center mb-12">
-            <div class="glass-card p-8 md:p-12 text-white">
-                <div class="max-w-3xl mx-auto">
-                    <div class="animate-float mb-8">
-                        <i data-lucide="alert-triangle" class="w-16 h-16 text-yellow-300"></i>
-                    </div>
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">
-                        Sistem Pelaporan K3RS RSUD Talaud
-                    </h2>
-                    <p class="text-blue-100 mb-8 text-lg">
-                        Pantau statistik dan laporkan insiden keselamatan serta kesehatan kerja dengan mudah
-                    </p>
-                    
-                    <button class="btn text-lg px-12 py-6 rounded-xl font-bold shadow-xl" onclick="scrollToForm()">
-                        <i data-lucide="alert-triangle" class="w-6 h-6"></i>
-                        LAPORKAN INSIDEN SEKARANG
-                    </button>
+        <div class="section">
+            <div class="section-title">A. KESELAMATAN UMUM</div>
+            <div class="checklist-item">
+                <div class="checklist-status ${data.keselamatanUmum.jalurEvakuasi ? 'status-yes' : 'status-no'}">
+                    ${data.keselamatanUmum.jalurEvakuasi ? '✓' : '✗'}
                 </div>
+                Jalur evakuasi jelas & bebas hambatan
             </div>
-        </section>
-
-        <!-- Dashboard Statistics -->
-        <section id="dashboard" class="mb-12">
-            <h3 class="text-2xl font-bold text-gray-900 mb-6">Dashboard Statistik</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="stats-card border-blue-200">
-                    <div class="flex justify-between items-start space-y-0 pb-2">
-                        <h4 class="text-sm font-medium">Total Laporan</h4>
-                        <i data-lucide="file-text" class="w-4 h-4 text-blue-600"></i>
-                    </div>
-                    <div>
-                        <div class="text-2xl font-bold text-blue-600" id="total-laporan">0</div>
-                        <p class="text-xs text-gray-500">Semua laporan tercatat</p>
-                    </div>
+            <div class="checklist-item">
+                <div class="checklist-status ${data.keselamatanUmum.alatPemadam ? 'status-yes' : 'status-no'}">
+                    ${data.keselamatanUmum.alatPemadam ? '✓' : '✗'}
                 </div>
-                
-                <div class="stats-card border-green-200">
-                    <div class="flex justify-between items-start space-y-0 pb-2">
-                        <h4 class="text-sm font-medium">Bulan Ini</h4>
-                        <i data-lucide="calendar" class="w-4 h-4 text-green-600"></i>
-                    </div>
-                    <div>
-                        <div class="text-2xl font-bold text-green-600" id="bulan-ini">0</div>
-                        <p class="text-xs text-gray-500">Laporan bulan berjalan</p>
-                    </div>
-                </div>
-                
-                <div class="stats-card border-emerald-200">
-                    <div class="flex justify-between items-start space-y-0 pb-2">
-                        <h4 class="text-sm font-medium">Sudah Ditangani</h4>
-                        <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i>
-                    </div>
-                    <div>
-                        <div class="text-2xl font-bold text-emerald-600" id="sudah-ditangani">0</div>
-                        <p class="text-xs text-gray-500">Kasus selesai diproses</p>
-                    </div>
-                </div>
-                
-                <div class="stats-card border-orange-200">
-                    <div class="flex justify-between items-start space-y-0 pb-2">
-                        <h4 class="text-sm font-medium">Sedang Diproses</h4>
-                        <i data-lucide="activity" class="w-4 h-4 text-orange-600"></i>
-                    </div>
-                    <div>
-                        <div class="text-2xl font-bold text-orange-600" id="sedang-diproses">0</div>
-                        <p class="text-xs text-gray-500">Dalam penanganan</p>
-                    </div>
-                </div>
+                Alat pemadam api tersedia & berfungsi
             </div>
-        </section>
-
-        <!-- Report Form -->
-        <section id="form-laporan" class="mb-12">
-            <div class="glass-card">
-                <div class="p-6 border-b border-blue-200 bg-gradient-to-r from-blue-50 to-blue-100">
-                    <div class="flex items-center gap-2 text-xl text-blue-800">
-                        <i data-lucide="alert-triangle" class="w-6 h-6"></i>
-                        Formulir Laporan Insiden K3RS
-                    </div>
-                    <p class="text-blue-600">Laporkan insiden keselamatan dan kesehatan kerja dengan detail yang lengkap</p>
+            <div class="checklist-item">
+                <div class="checklist-status ${data.keselamatanUmum.penerangan ? 'status-yes' : 'status-no'}">
+                    ${data.keselamatanUmum.penerangan ? '✓' : '✗'}
                 </div>
-                
-                <div class="p-6 relative">
-                    <!-- PIN Verification -->
-                    <div id="pin-section" class="mb-6 p-6 border-2 border-red-300 rounded-lg bg-red-50">
-                        <div class="text-center">
-                            <div class="mb-4">
-                                <div class="inline-flex items-center justify-center w-16 h-16 bg-red-100 rounded-full mb-3">
-                                    <i data-lucide="lock" class="w-8 h-8 text-red-600"></i>
-                                </div>
-                            </div>
-                            <h3 class="text-lg font-semibold text-red-800 mb-2">Verifikasi PIN Diperlukan</h3>
-                            <p class="text-sm text-red-600 mb-4">
-                                Masukkan PIN 6 angka untuk mengakses formulir laporan
-                            </p>
-                            
-                            <form onsubmit="handlePinSubmit(event)" class="space-y-4 max-w-sm mx-auto">
-                                <div>
-                                    <input 
-                                        type="password" 
-                                        id="pin-input"
-                                        class="pin-input input"
-                                        placeholder="Masukkan 6 digit PIN"
-                                        maxlength="6"
-                                        autofocus
-                                        oninput="validatePinInput(this)"
-                                    />
-                                </div>
-                                
-                                <div id="pin-error" class="text-red-600 text-sm hidden">
-                                    PIN salah! Silakan coba lagi.
-                                </div>
-                                
-                                <button type="submit" class="btn w-full bg-red-600 hover:bg-red-700" id="verify-btn">
-                                    Verifikasi PIN
-                                </button>
-                            </form>
-                            
-                            <div class="mt-4 text-xs text-red-500">
-                                <p>* Demo: Gunakan PIN <span class="font-mono font-bold">291196</span></p>
-                                <p>* Masukkan 6 digit PIN yang benar untuk mengakses formulir</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Form Overlay -->
-                    <div id="form-overlay" class="lock-overlay absolute inset-0 flex items-center justify-center z-10">
-                        <div class="text-center">
-                            <i data-lucide="lock" class="w-16 h-16 text-gray-400 mx-auto mb-3"></i>
-                            <p class="text-gray-600 font-semibold">Form Terkunci</p>
-                            <p class="text-sm text-gray-500">Masukkan PIN yang benar untuk membuka</p>
-                        </div>
-                    </div>
-
-                    <!-- Report Form -->
-                    <form id="report-form" onsubmit="handleReportSubmit(event)" class="space-y-6 opacity-50 pointer-events-none">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="text-base font-medium">Nama Pelapor</label>
-                                <input 
-                                    type="text" 
-                                    id="pelapor"
-                                    value="Tim K3RS RSUD Talaud"
-                                    disabled
-                                    class="input mt-2 bg-gray-100 text-gray-700 cursor-not-allowed"
-                                />
-                                <p class="text-xs text-gray-500 mt-1">* Pelapor permanen untuk sistem K3RS</p>
-                            </div>
-                            <div>
-                                <label class="text-base font-medium">Lokasi Kejadian</label>
-                                <select id="lokasi" class="select mt-2" onchange="analyzePriority()">
-                                    <option value="">Pilih lokasi kejadian</option>
-                                    <option value="ANGGREK">ANGGREK</option>
-                                    <option value="APOTEK/FARMASI">APOTEK/FARMASI</option>
-                                    <option value="BINATU">BINATU</option>
-                                    <option value="CRYSANT">CRYSANT</option>
-                                    <option value="DAHLIA">DAHLIA</option>
-                                    <option value="EDELWEIS">EDELWEIS</option>
-                                    <option value="FISIOTERAPI">FISIOTERAPI</option>
-                                    <option value="GUDANG APOTEK">GUDANG APOTEK</option>
-                                    <option value="IBS">IBS</option>
-                                    <option value="ICU">ICU</option>
-                                    <option value="IGD">IGD</option>
-                                    <option value="IGD VK">IGD VK</option>
-                                    <option value="INSTALASI GIZI">INSTALASI GIZI</option>
-                                    <option value="IPSRS">IPSRS</option>
-                                    <option value="ISOLASI">ISOLASI</option>
-                                    <option value="KANTOR">KANTOR</option>
-                                    <option value="LABORATORIUM">LABORATORIUM</option>
-                                    <option value="MEDREC">MEDREC</option>
-                                    <option value="NICU">NICU</option>
-                                    <option value="PEMULASARAN JENAZAH">PEMULASARAN JENAZAH</option>
-                                    <option value="POLIKLINIK">POLIKLINIK</option>
-                                    <option value="POS SATPAM">POS SATPAM</option>
-                                    <option value="RADIOLODI">RADIOLODI</option>
-                                    <option value="UNIT TRANSFUSI DARAH">UNIT TRANSFUSI DARAH</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="text-base font-medium">Jenis Insiden</label>
-                                <select id="jenis" class="select mt-2" onchange="analyzePriority()">
-                                    <option value="">Pilih jenis insiden</option>
-                                    <option value="kecelakaan">Kecelakaan Kerja</option>
-                                    <option value="paparan">Paparan Darah/Cairan Tubuh</option>
-                                    <option value="kebakaran">Kebakaran</option>
-                                    <option value="bahan kimia">Kebocoran Bahan Kimia</option>
-                                    <option value="jatuh">Jatuh Pasien/Pengunjung</option>
-                                    <option value="fasilitas">Insiden Fasilitas</option>
-                                    <option value="evakuasi">Evakuasi/Tanggap Darurat</option>
-                                    <option value="lainnya">Lainnya</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="text-base font-medium">Tingkat Prioritas</label>
-                                <div class="mt-2">
-                                    <div class="priority-indicator" id="priority-display">
-                                        <div id="priority-dot" class="priority-dot bg-yellow-500"></div>
-                                        <span id="priority-text" class="font-semibold capitalize">sedang</span>
-                                        <span class="text-xs text-gray-500 ml-auto">* Otomatis dianalisis</span>
-                                    </div>
-                                </div>
-                                <p class="text-xs text-gray-500 mt-1">* Prioritas otomatis berdasarkan lokasi, jenis, dan deskripsi</p>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <label class="text-base font-medium">Deskripsi Kejadian</label>
-                            <textarea 
-                                id="deskripsi"
-                                rows="5"
-                                class="textarea mt-2"
-                                placeholder="Jelaskan kronologi kejadian secara detail..."
-                                oninput="analyzePriority()"
-                            ></textarea>
-                        </div>
-                        
-                        <div class="flex justify-end space-x-3 pt-4">
-                            <button type="button" class="btn btn-secondary" onclick="resetForm()">
-                                <i data-lucide="refresh-cw" class="w-4 h-4"></i>
-                                Reset Form
-                            </button>
-                            <button type="submit" class="btn bg-blue-600 hover:bg-blue-700">
-                                <i data-lucide="send" class="w-4 h-4"></i>
-                                Kirim Laporan
-                            </button>
-                        </div>
-                    </form>
+                Penerangan memadai
+            </div>
+            <div class="checklist-item">
+                <div class="checklist-status ${data.keselamatanUmum.lantaiTidakLicin ? 'status-yes' : 'status-no'}">
+                    ${data.keselamatanUmum.lantaiTidakLicin ? '✓' : '✗'}
                 </div>
+                Lantai tidak licin
             </div>
-        </section>
-
-        <!-- Reports Table -->
-        <section id="tabel-laporan">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold text-gray-900">Laporan Terbaru</h3>
-                <button class="btn btn-secondary" onclick="loadReports()">
-                    <i data-lucide="refresh-cw" class="w-4 h-4"></i>
-                    Refresh
-                </button>
-            </div>
-            
-            <div class="table-container">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th class="w-20">ID</th>
-                            <th>Tanggal</th>
-                            <th>Pelapor</th>
-                            <th>Lokasi</th>
-                            <th>Jenis Insiden</th>
-                            <th>Status</th>
-                            <th>Prioritas</th>
-                            <th class="w-20 text-right">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody id="reports-tbody" class="bg-white divide-y divide-gray-200">
-                        <tr class="hover:bg-gray-50">
-                            <td class="font-medium" colspan="8" style="text-align: center;">
-                                <div class="flex flex-col items-center justify-center py-8">
-                                    <i data-lucide="inbox" class="w-12 h-12 text-gray-400 mx-auto mb-4"></i>
-                                    <p class="text-gray-600 font-semibold">Belum ada laporan</p>
-                                    <p class="text-sm text-gray-500">Laporan pertama akan muncul di sini setelah pengisian formulir</p>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="glass-card mt-16 py-8 px-6 text-center">
-            <div class="flex justify-between items-center">
-                <div class="text-sm text-gray-600">
-                    © 2024 K3RS RSUD Talaud. Hak Cipta Dilindungi.
+            <div class="checklist-item">
+                <div class="checklist-status ${data.keselamatanUmum.tandaKeselamatan ? 'status-yes' : 'status-no'}">
+                    ${data.keselamatanUmum.tandaKeselamatan ? '✓' : '✗'}
                 </div>
-                <div class="flex items-center space-x-4 text-sm text-gray-600">
-                    <span>Powered by</span>
-                    <div class="flex items-center space-x-2">
-                        <div class="w-6 h-6 bg-gradient-to-r from-blue-500 to-blue-600 rounded flex items-center justify-center">
-                            <i data-lucide="shield" class="w-4 h-4 text-white"></i>
-                        </div>
-                        <span class="font-semibold">K3RS System</span>
-                    </div>
-                </div>
+                Tanda keselamatan terlihat jelas
             </div>
-        </footer>
+            ${data.keselamatanUmum.catatan ? `
+            <div class="notes">
+                <strong>Catatan/Temuan:</strong><br>
+                ${data.keselamatanUmum.catatan}
+            </div>
+            ` : ''}
+        </div>
+
+        <div class="section">
+            <div class="section-title">B. KESEHATAN LINGKUNGAN</div>
+            <div class="checklist-item">
+                <div class="checklist-status ${data.kesehatanLingkungan.ventilasi ? 'status-yes' : 'status-no'}">
+                    ${data.kesehatanLingkungan.ventilasi ? '✓' : '✗'}
+                </div>
+                Ventilasi baik
+            </div>
+            <div class="checklist-item">
+                <div class="checklist-status ${data.kesehatanLingkungan.suhuKelembapan ? 'status-yes' : 'status-no'}">
+                    ${data.kesehatanLingkungan.suhuKelembapan ? '✓' : '✗'}
+                </div>
+                Suhu dan kelembapan terkontrol
+            </div>
+            <div class="checklist-item">
+                <div class="checklist-status ${data.kesehatanLingkungan.limbahMedis ? 'status-yes' : 'status-no'}">
+                    ${data.kesehatanLingkungan.limbahMedis ? '✓' : '✗'}
+                </div>
+                Limbah medis dikelola sesuai SOP
+            </div>
+            <div class="checklist-item">
+                <div class="checklist-status ${data.kesehatanLingkungan.areaBersih ? 'status-yes' : 'status-no'}">
+                    ${data.kesehatanLingkungan.areaBersih ? '✓' : '✗'}
+                </div>
+                Area bersih dan bebas bau
+            </div>
+            ${data.kesehatanLingkungan.catatan ? `
+            <div class="notes">
+                <strong>Catatan/Temuan:</strong><br>
+                ${data.kesehatanLingkungan.catatan}
+            </div>
+            ` : ''}
+        </div>
+
+        <div class="section">
+            <div class="section-title">C. PERALATAN & LISTRIK</div>
+            <div class="checklist-item">
+                <div class="checklist-status ${data.peralatanListrik.kabelRapi ? 'status-yes' : 'status-no'}">
+                    ${data.peralatanListrik.kabelRapi ? '✓' : '✗'}
+                </div>
+                Kabel rapi dan aman
+            </div>
+            <div class="checklist-item">
+                <div class="checklist-status ${data.peralatanListrik.panelTerkunci ? 'status-yes' : 'status-no'}">
+                    ${data.peralatanListrik.panelTerkunci ? '✓' : '✗'}
+                </div>
+                Panel listrik terkunci
+            </div>
+            <div class="checklist-item">
+                <div class="checklist-status ${data.peralatanListrik.grounding ? 'status-yes' : 'status-no'}">
+                    ${data.peralatanListrik.grounding ? '✓' : '✗'}
+                </div>
+                Grounding peralatan berfungsi
+            </div>
+            <div class="checklist-item">
+                <div class="checklist-status ${data.peralatanListrik.peralatanRutin ? 'status-yes' : 'status-no'}">
+                    ${data.peralatanListrik.peralatanRutin ? '✓' : '✗'}
+                </div>
+                Peralatan medis diperiksa rutin
+            </div>
+            ${data.peralatanListrik.catatan ? `
+            <div class="notes">
+                <strong>Catatan/Temuan:</strong><br>
+                ${data.peralatanListrik.catatan}
+            </div>
+            ` : ''}
+        </div>
+
+        <div class="section">
+            <div class="section-title">D. APD (ALAT PELINDUNG DIRI)</div>
+            <div class="checklist-item">
+                <div class="checklist-status ${data.apd.petugasAPD ? 'status-yes' : 'status-no'}">
+                    ${data.apd.petugasAPD ? '✓' : '✗'}
+                </div>
+                Petugas menggunakan APD sesuai standar
+            </div>
+            <div class="checklist-item">
+                <div class="checklist-status ${data.apd.apdTersedia ? 'status-yes' : 'status-no'}">
+                    ${data.apd.apdTersedia ? '✓' : '✗'}
+                </div>
+                APD tersedia dalam jumlah cukup
+            </div>
+            <div class="checklist-item">
+                <div class="checklist-status ${data.apd.apdKondisiBaik ? 'status-yes' : 'status-no'}">
+                    ${data.apd.apdKondisiBaik ? '✓' : '✗'}
+                </div>
+                APD dalam kondisi baik
+            </div>
+            ${data.apd.catatan ? `
+            <div class="notes">
+                <strong>Catatan/Temuan:</strong><br>
+                ${data.apd.catatan}
+            </div>
+            ` : ''}
+        </div>
+
+        <div class="score-section">
+            <div class="score">${data.skorKepatuhan}%</div>
+            <div>SKOR KEPATUHAN</div>
+            <div class="risk-badge risk-${data.tingkatRisiko}">
+                TINGKAT RISIKO: ${data.tingkatRisiko.toUpperCase()}
+            </div>
+        </div>
+
+        ${data.rekomendasi ? `
+        <div class="section">
+            <div class="section-title">REKOMENDASI PERBAIKAN</div>
+            <div class="notes">
+                ${data.rekomendasi}
+            </div>
+        </div>
+        ` : ''}
+
+        <div class="footer">
+            <p>© 2025 RSUD Talaud — Tim K3RS</p>
+            <p>Laporan ini dibuat pada: ${new Date().toLocaleString('id-ID')}</p>
+        </div>
     </div>
+</body>
+</html>
+            `;
+        }
 
-    <script>
-        // Global Variables
-        let reports = [];
-        let isFormLocked = true;
-        const CORRECT_PIN = '291196';
-
-        // Initialize
+        // Event listeners
         document.addEventListener('DOMContentLoaded', function() {
-            updateDateTime();
-            setInterval(updateDateTime, 1000);
-            initializeLucideIcons();
-            loadReports();
+            // Add event listeners to all checkboxes for score calculation
+            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                checkbox.addEventListener('change', updateScore);
+            });
+            
+            // Add event listener to risk radio buttons
+            document.querySelectorAll('input[name="tingkatRisiko"]').forEach(radio => {
+                radio.addEventListener('change', updateRiskBadge);
+            });
+            
+            // Initialize displays
+            updateScore();
+            updateRiskBadge();
         });
-
-        // Initialize Lucide Icons
-        function initializeLucideIcons() {
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            }
-        }
-
-        // Update date and time
-        function updateDateTime() {
-            const now = new Date();
-            const options = { 
-                weekday: 'long', 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-            };
-            const dateElement = document.getElementById('current-date');
-            if (dateElement) {
-                dateElement.textContent = now.toLocaleDateString('id-ID', options);
-            }
-        }
-
-        // PIN Verification
-        function handlePinSubmit(event) {
-            event.preventDefault();
-            
-            const pinInput = document.getElementById('pin-input');
-            const pin = pinInput.value;
-            
-            if (pin === CORRECT_PIN) {
-                unlockForm();
-            } else {
-                showPinError();
-            }
-        }
-
-        function validatePinInput(input) {
-            // Only allow numbers
-            input.value = input.value.replace(/\D/g, '').slice(0, 6);
-            
-            // Enable verify button only when 6 digits
-            const verifyBtn = document.getElementById('verify-btn');
-            if (verifyBtn) {
-                verifyBtn.disabled = input.value.length !== 6;
-            }
-        }
-
-        function showPinError() {
-            const errorDiv = document.getElementById('pin-error');
-            if (errorDiv) {
-                errorDiv.classList.remove('hidden');
-                errorDiv.textContent = 'PIN salah! Silakan coba lagi.';
-                
-                setTimeout(() => {
-                    errorDiv.classList.add('hidden');
-                }, 3000);
-            }
-        }
-
-        function unlockForm() {
-            isFormLocked = false;
-            const pinSection = document.getElementById('pin-section');
-            const formOverlay = document.getElementById('form-overlay');
-            const reportForm = document.getElementById('report-form');
-            
-            if (pinSection) pinSection.style.display = 'none';
-            if (formOverlay) formOverlay.style.display = 'none';
-            if (reportForm) {
-                reportForm.classList.remove('opacity-50', 'pointer-events-none');
-                reportForm.classList.add('animate-slide-up');
-            }
-            
-            // Reset PIN input
-            const pinInput = document.getElementById('pin-input');
-            const pinError = document.getElementById('pin-error');
-            if (pinInput) pinInput.value = '';
-            if (pinError) pinError.classList.add('hidden');
-        }
-
-        // Priority Analysis
-        function analyzePriority() {
-            const lokasi = document.getElementById('lokasi')?.value || '';
-            const jenis = document.getElementById('jenis')?.value || '';
-            const deskripsi = document.getElementById('deskripsi')?.value || '';
-            
-            if (!lokasi || !jenis || !deskripsi) return;
-            
-            let score = 0;
-            
-            // Location analysis
-            const criticalLocations = ['ICU', 'NICU', 'IGD', 'IGD VK', 'ISOLASI'];
-            const highRiskLocations = ['LABORATORIUM', 'UNIT TRANSFUSI DARAH', 'APOTEK/FARMASI'];
-            const mediumRiskLocations = ['POLIKLINIK', 'RADIOLODI', 'FISIOTERAPI', 'INSTALASI GIZI'];
-            
-            if (criticalLocations.includes(lokasi)) score += 3;
-            else if (highRiskLocations.includes(lokasi)) score += 2;
-            else if (mediumRiskLocations.includes(lokasi)) score += 1;
-            
-            // Incident type analysis
-            const criticalIncidents = ['kebakaran', 'evakuasi', 'bahan kimia'];
-            const highRiskIncidents = ['kecelakaan', 'paparan'];
-            const mediumRiskIncidents = ['jatuh', 'fasilitas'];
-            
-            if (criticalIncidents.includes(jenis)) score += 3;
-            else if (highRiskIncidents.includes(jenis)) score += 2;
-            else if (mediumRiskIncidents.includes(jenis)) score += 1;
-            
-            // Description analysis
-            const criticalKeywords = ['kematian', 'meninggal', 'darah parah', 'terbakar', 'ledakan', 'tumpahan', 'kontaminasi', 'bocor parah'];
-            const highRiskKeywords = ['cedera', 'luka', 'pingsan', 'jatuh', 'tersengat', 'paparan', 'kontak'];
-            const mediumRiskKeywords = ['rusak', 'tidak berfungsi', 'macet', 'bocor', 'panas', 'dingin', 'mati'];
-            
-            const deskripsiLower = deskripsi.toLowerCase();
-            
-            criticalKeywords.forEach(keyword => {
-                if (deskripsiLower.includes(keyword)) score += 3;
-            });
-            
-            highRiskKeywords.forEach(keyword => {
-                if (deskripsiLower.includes(keyword)) score += 2;
-            });
-            
-            mediumRiskKeywords.forEach(keyword => {
-                if (deskripsiLower.includes(keyword)) score += 1;
-            });
-            
-            // Determine priority
-            let priority = 'rendah';
-            if (score >= 7) priority = 'tinggi';
-            else if (score >= 4) priority = 'sedang';
-            
-            updatePriorityDisplay(priority);
-        }
-
-        function updatePriorityDisplay(priority) {
-            const priorityDot = document.getElementById('priority-dot');
-            const priorityText = document.getElementById('priority-text');
-            
-            if (priorityDot && priorityText) {
-                // Update dot color
-                priorityDot.className = 'priority-dot';
-                if (priority === 'tinggi') {
-                    priorityDot.classList.add('bg-red-500');
-                } else if (priority === 'sedang') {
-                    priorityDot.classList.add('bg-yellow-500');
-                } else {
-                    priorityDot.classList.add('bg-green-500');
-                }
-                
-                // Update text
-                priorityText.textContent = priority;
-            }
-        }
-
-        // Form submission
-        function handleReportSubmit(event) {
-            event.preventDefault();
-            
-            if (isFormLocked) {
-                alert('Form terkunci. Silakan masukkan PIN terlebih dahulu.');
-                return;
-            }
-            
-            const lokasi = document.getElementById('lokasi')?.value || '';
-            const jenis = document.getElementById('jenis')?.value || '';
-            const deskripsi = document.getElementById('deskripsi')?.value || '';
-            
-            if (!lokasi || !jenis || !deskripsi) {
-                showError('Mohon lengkapi semua field yang diperlukan!');
-                return;
-            }
-            
-            const report = {
-                id: reports.length + 1,
-                tanggal: new Date().toISOString().split('T')[0],
-                pelapor: 'Tim K3RS RSUD Talaud',
-                lokasi: lokasi,
-                jenis: jenis,
-                deskripsi: deskripsi,
-                status: 'menunggu',
-                prioritas: document.getElementById('priority-text')?.textContent || 'sedang'
-            };
-            
-            // Add to reports array
-            reports.unshift(report);
-            
-            // Update UI
-            addReportToTable(report);
-            updateStatistics();
-            showSuccessMessage();
-            resetForm();
-        }
-
-        function resetForm() {
-            const lokasiSelect = document.getElementById('lokasi');
-            const jenisSelect = document.getElementById('jenis');
-            const deskripsiTextarea = document.getElementById('deskripsi');
-            
-            if (lokasiSelect) lokasiSelect.value = '';
-            if (jenisSelect) jenisSelect.value = '';
-            if (deskripsiTextarea) deskripsiTextarea.value = '';
-            
-            updatePriorityDisplay('sedang');
-            
-            // Lock form again
-            lockForm();
-        }
-
-        function lockForm() {
-            isFormLocked = true;
-            const pinSection = document.getElementById('pin-section');
-            const formOverlay = document.getElementById('form-overlay');
-            const reportForm = document.getElementById('report-form');
-            
-            if (pinSection) pinSection.style.display = 'block';
-            if (formOverlay) formOverlay.style.display = 'flex';
-            if (reportForm) {
-                reportForm.classList.add('opacity-50', 'pointer-events-none');
-                reportForm.classList.remove('animate-slide-up');
-            }
-        }
-
-        function addReportToTable(report) {
-            const tbody = document.getElementById('reports-tbody');
-            if (!tbody) return;
-            
-            // Remove empty message if exists
-            const emptyRow = tbody.querySelector('td[colspan="8"]');
-            if (emptyRow) {
-                emptyRow.parentElement.remove();
-            }
-            
-            const row = document.createElement('tr');
-            row.className = 'hover:bg-gray-50 animate-slide-up';
-            
-            const priorityColor = report.prioritas === 'tinggi' ? 'bg-red-500' : 
-                                   report.prioritas === 'sedang' ? 'bg-yellow-500' : 'bg-green-500';
-            
-            const statusColor = report.status === 'selesai' ? 'badge-high' : 
-                                 report.status === 'diproses' ? 'badge-medium' : 'badge-low';
-            
-            const statusText = report.status === 'selesai' ? 'Selesai' : 
-                              report.status === 'diproses' ? 'Diproses' : 'Menunggu';
-            
-            row.innerHTML = `
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">#${report.id}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm">${formatDate(report.tanggal)}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm">
-                    <div class="flex items-center gap-2">
-                        <i data-lucide="user" class="w-4 h-4 text-gray-400"></i>
-                        ${report.pelapor}
-                    </div>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm">
-                    <div class="flex items-center gap-2">
-                        <i data-lucide="map-pin" class="w-4 h-4 text-gray-400"></i>
-                        ${report.lokasi}
-                    </div>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm">${report.jenis}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm">
-                    <span class="badge ${statusColor}">${statusText}</span>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm">
-                    <div class="flex items-center gap-2">
-                        <div class="w-2 h-2 rounded-full ${priorityColor}"></div>
-                        <span>${report.prioritas}</span>
-                    </div>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-right">
-                    <button class="text-blue-600 hover:text-blue-800" onclick="viewReportDetail(${report.id})">
-                        <i data-lucide="eye" class="w-4 h-4"></i>
-                    </button>
-                </td>
-            `;
-            
-            tbody.insertBefore(row, tbody.firstChild);
-        }
-
-        function formatDate(dateString) {
-            const date = new Date(dateString);
-            return date.toLocaleDateString('id-ID');
-        }
-
-        function updateStatistics() {
-            const totalReports = reports.length;
-            const bulanIni = reports.filter(r => {
-                const reportDate = new Date(r.tanggal);
-                const now = new Date();
-                return reportDate.getMonth() === now.getMonth() && 
-                       reportDate.getFullYear() === now.getFullYear();
-            }).length;
-            const sudahDitangani = reports.filter(r => r.status === 'selesai').length;
-            const sedangDiproses = reports.filter(r => r.status === 'diproses').length;
-            
-            const totalElement = document.getElementById('total-laporan');
-            const bulanIniElement = document.getElementById('bulan-ini');
-            const sudahDitanganiElement = document.getElementById('sudah-ditangani');
-            const sedangDiprosesElement = document.getElementById('sedang-diproses');
-            
-            if (totalElement) totalElement.textContent = totalReports;
-            if (bulanIniElement) bulanIniElement.textContent = bulanIni;
-            if (sudahDitanganiElement) sudahDitanganiElement.textContent = sudahDitangani;
-            if (sedangDiprosesElement) sedangDiprosesElement.textContent = sedangDiproses;
-        }
-
-        function loadReports() {
-            // In real implementation, this would fetch from API
-            // For demo, we'll keep the current reports
-            updateStatistics();
-        }
-
-        function viewReportDetail(reportId) {
-            const report = reports.find(r => r.id === reportId);
-            if (report) {
-                alert(`Detail Laporan #${report.id}\n\n` +
-                      `Tanggal: ${formatDate(report.tanggal)}\n` +
-                      `Pelapor: ${report.pelapor}\n` +
-                      `Lokasi: ${report.lokasi}\n` +
-                      `Jenis: ${report.jenis}\n` +
-                      `Deskripsi: ${report.deskripsi}\n` +
-                      `Status: ${report.status}\n` +
-                      `Prioritas: ${report.prioritas}`);
-            }
-        }
-
-        function showSuccessMessage() {
-            const message = document.createElement('div');
-            message.className = 'toast toast-success';
-            message.innerHTML = `
-                <div class="flex items-center gap-2">
-                    <i data-lucide="check-circle" class="w-5 h-5"></i>
-                    <span class="font-medium">Laporan berhasil dikirim!</span>
-                </div>
-            `;
-            
-            document.body.appendChild(message);
-            
-            setTimeout(() => {
-                message.remove();
-            }, 3000);
-        }
-
-        function showError(message) {
-            const errorMessage = document.createElement('div');
-            errorMessage.className = 'toast toast-error';
-            errorMessage.innerHTML = `
-                <div class="flex items-center gap-2">
-                    <i data-lucide="alert-circle" class="w-5 h-5"></i>
-                    <span class="font-medium">${message}</span>
-                </div>
-            `;
-            
-            document.body.appendChild(errorMessage);
-            
-            setTimeout(() => {
-                errorMessage.remove();
-            }, 3000);
-        }
-
-        function scrollToForm() {
-            const formElement = document.getElementById('form-laporan');
-            if (formElement) {
-                formElement.scrollIntoView({ 
-                    behavior: 'smooth' 
-                });
-            }
-        }
     </script>
 </body>
 </html>
